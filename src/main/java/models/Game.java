@@ -41,25 +41,31 @@ public class Game {
     public void dealFour() {
 	Card tempCard = NULL; //creates variable as object type card
 	for(i=0; i++; i<4) //loop to place a card in each column
-	{
-	tempCard = getTopCard(i); //draws card and saves in tempCard
-	addCardToCol(i,tempCard); //places card in column
-	}
+	   {
+        tempCard = getTopCard(i); //draws card and saves in tempCard
+        addCardToCol(i,tempCard); //places card in column
+	   }
     }
 
     public void remove(int columnNumber) {
         // remove the top card from the indicated column
+        //Check if empty
+        if(!columnNumber){
+            removeCardFormCol(columnNumber);
+        }
+        //Otherwise just exit
     }
 
     private boolean columnHasCards(int columnNumber) {
+        // if empty return true, else false
         if(cols.get(columnNumber).length == 0)
-	{
-	return true;
-	}
-	else
-	{
-        return false;
-	}
+    	{
+            return true;
+    	}
+    	else
+    	{
+            return false;
+    	}
     }
 
     private Card getTopCard(int columnNumber) {
