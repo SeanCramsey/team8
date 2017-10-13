@@ -13,9 +13,9 @@ public class Game {
 
     public java.util.List<java.util.List<Card>> cols = new ArrayList<>(4);
 
-    public Game(){
-        // initialize a new game such that each column can store cards
 
+    public Game(){
+    // initialize a new game such that each column can store cards
     }
 
     public void buildDeck() {
@@ -31,8 +31,16 @@ public class Game {
         // shuffles the deck so that it is random
     }
 
+	/*
+	Deal Four does the equivalent of drawing four cards and then setting them on each holding column.
+	*/
     public void dealFour() {
-        // remove the top card from the deck and add it to a column; repeat for each of the four columns
+		Card tempcard = NULL; //creates variable as object type card
+		for(i=0; i++; i<4) //loop to place a card in each column
+		{
+		tempcard = getTopCard(i); //draws card and saves in tempCard
+		addCardToCol(i,tempcard); //places card in column
+		}
     }
 
     public void remove(int columnNumber) {
@@ -51,12 +59,6 @@ public class Game {
 
     public void move(int columnFrom, int columnTo) {
         // remove the top card from the columnFrom column, add it to the columnTo column
-        // save top card
-        Card topCard = getTopCard(columnFrom);
-        // remove top card
-        removeCardFormCol(columnFrom);
-        //Add card to new column
-        addCardtoCol(columnTo,topcard);
     }
 
     private void addCardToCol(int columnTo, Card cardToMove) {
