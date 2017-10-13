@@ -56,8 +56,7 @@ public class Game {
         // remove top card
         removeCardFormCol(columnFrom);
         //Add card to new column
-        addCardtoCol(columnTo,topcardv);
-
+        addCardtoCol(columnTo,topcard);
     }
 
     private void addCardToCol(int columnTo, Card cardToMove) {
