@@ -39,10 +39,13 @@ public class Game {
 	Deal Four does the equivalent of drawing four cards and then setting them on each holding column.
 	*/
     public void dealFour() {
-	Card tempCard = NULL; //creates variable as object type card
+	Card tempCard; //creates variable as object type card
     //loop to place a card in each column
-	for(i=0; i<4; i++) {
-        tempCard = getTopCard(i); //draws card and saves in tempCard
+	for(int i=0; i<4; i++) {
+        //Draw card from deck
+        tempCard = deck.get(0);
+        //remove from deck
+        deck.remove(0); 
         addCardToCol(i,tempCard); //places card in column
         }
     }
@@ -50,22 +53,15 @@ public class Game {
     public void remove(int columnNumber) {
         // remove the top card from the indicated column
         //Check if empty
-        if(!columnNumber){
-            removeCardFormCol(columnNumber);
+        if(!columnHasCards(columnNumber)){
+            removeCardFromCol(columnNumber);
         }
         //Otherwise just exit
     }
 
     private boolean columnHasCards(int columnNumber) {
         // if empty return true, else false
-        if(cols.get(columnNumber).length == 0)
-    	{
-            return true;
-    	}
-    	else
-    	{
-            return false;
-    	}
+        return cols.get(columnNumber).isEmpty();
     }
 
     private Card getTopCard(int columnNumber) {
@@ -78,9 +74,9 @@ public class Game {
         // save top card
         Card topCard = getTopCard(columnFrom);
         // remove top card
-        removeCardFormCol(columnFrom);
+        removeCardFromCol(columnFrom);
         //Add card to new column
-        addCardtoCol(columnTo,topCard);
+        addCardToCol(columnTo , topCard);
     }
 
     private void addCardToCol(int columnTo, Card cardToMove) {
