@@ -35,12 +35,12 @@ public class Game {
 	Deal Four does the equivalent of drawing four cards and then setting them on each holding column.
 	*/
     public void dealFour() {
-		Card tempcard = NULL; //creates variable as object type card
-		for(i=0; i++; i<4) //loop to place a card in each column
-		{
-		tempcard = getTopCard(i); //draws card and saves in tempCard
-		addCardToCol(i,tempcard); //places card in column
-		}
+	Card tempCard = NULL; //creates variable as object type card
+	for(i=0; i++; i<4) //loop to place a card in each column
+	{
+	tempCard = getTopCard(i); //draws card and saves in tempCard
+	addCardToCol(i,tempcard); //places card in column
+	}
     }
 
     public void remove(int columnNumber) {
