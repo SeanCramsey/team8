@@ -39,7 +39,7 @@ public class Game {
 	for(i=0; i++; i<4) //loop to place a card in each column
 	{
 	tempCard = getTopCard(i); //draws card and saves in tempCard
-	addCardToCol(i,tempcard); //places card in column
+	addCardToCol(i,tempCard); //places card in column
 	}
     }
 
