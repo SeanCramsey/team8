@@ -50,7 +50,7 @@ public class Game {
     public void remove(int columnNumber) {
         // remove the top card from the indicated column
         //Check if empty
-        if(!columnNumber){
+        if(!columnHasCards(columnNumber)){
             removeCardFromCol(columnNumber);
         }
         //Otherwise just exit
@@ -58,14 +58,7 @@ public class Game {
 
     private boolean columnHasCards(int columnNumber) {
         // if empty return true, else false
-        if(cols.get(columnNumber).size == 0)
-    	{
-            return true;
-    	}
-    	else
-    	{
-            return false;
-    	}
+        return cols.get(columnNumber).isEmpty();
     }
 
     private Card getTopCard(int columnNumber) {
@@ -80,7 +73,7 @@ public class Game {
         // remove top card
         removeCardFromCol(columnFrom);
         //Add card to new column
-        addCardtoCol(columnTo , topCard);
+        addCardToCol(columnTo , topCard);
     }
 
     private void addCardToCol(int columnTo, Card cardToMove) {
