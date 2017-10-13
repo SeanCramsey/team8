@@ -42,7 +42,10 @@ public class Game {
 	Card tempCard; //creates variable as object type card
     //loop to place a card in each column
 	for(int i=0; i<4; i++) {
-        tempCard = getTopCard(i); //draws card and saves in tempCard
+        //Draw card from deck
+        tempCard = deck.get(0);
+        //remove from deck
+        deck.remove(0); 
         addCardToCol(i,tempCard); //places card in column
         }
     }
