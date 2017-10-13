@@ -51,11 +51,12 @@ public class Game {
     }
 
     private boolean columnHasCards(int columnNumber) {
-        if(cols[columnNumber].length == 0)
+        if(cols.get(columnNumber).length == 0)
 	{
 	return true;
 	}
-	else{
+	else
+	{
         return false;
 	}
     }
