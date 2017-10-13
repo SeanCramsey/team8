@@ -40,11 +40,11 @@ public class Game {
 	*/
     public void dealFour() {
 	Card tempCard = NULL; //creates variable as object type card
-	for(i=0; i++; i<4) //loop to place a card in each column
-	   {
+    //loop to place a card in each column
+	for(i=0; i<4; i++) {
         tempCard = getTopCard(i); //draws card and saves in tempCard
         addCardToCol(i,tempCard); //places card in column
-	   }
+        }
     }
 
     public void remove(int columnNumber) {
