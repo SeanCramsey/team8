@@ -13,9 +13,9 @@ public class Game {
 
     public java.util.List<java.util.List<Card>> cols = new ArrayList<>(4);
 
-
     public Game(){
         // initialize a new game such that each column can store cards
+
     }
 
     public void buildDeck() {
@@ -51,6 +51,12 @@ public class Game {
 
     public void move(int columnFrom, int columnTo) {
         // remove the top card from the columnFrom column, add it to the columnTo column
+        // save top card
+        Card topCard = getTopCard(columnFrom);
+        // remove top card
+        removeCardFormCol(columnFrom);
+        //Add card to new column
+        addCardtoCol(columnTo,topcard);
     }
 
     private void addCardToCol(int columnTo, Card cardToMove) {
