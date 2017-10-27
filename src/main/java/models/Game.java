@@ -53,17 +53,34 @@ public class Game {
     }
 
     public void remove(int columnNumber) {
-        // remove the top card from the indicated column
-        //Check if empty
-        if(!columnHasCards(columnNumber)){
-            removeCardFromCol(columnNumber);
+        Card c = getTopCard(columnNumber);
+        boolean removeCard = false;
+        //Go thru columns to see if there is a larger card of same suit
+        for (int i = 0; i < 4; i++) {
+            if (i != columnNumber) {
+                if (columnHasCards(i)) {
+                    Card compare = getTopCard(i);
+                    if (compare.getSuit() == c.getSuit()) {
+                        if (compare.getValue() > c.getValue()) {
+                            removeCard = true;
+                        }
+                    }
+                }
+            }
         }
-        //Otherwise just exit
+        //If there is, remove the card
+        if (removeCard) {
+            this.cols.get(columnNumber).remove(this.cols.get(columnNumber).size() - 1);
+        }
+        //Otherwise TODO:Add error message if not possible to remove
     }
 
     private boolean columnHasCards(int columnNumber) {
         // if empty return true, else false
-        return cols.get(columnNumber).isEmpty();
+        if(this.cols.get(columnNumber).size()>0){
+            return true;
+        }
+        return false;
     }
 
     private Card getTopCard(int columnNumber) {
