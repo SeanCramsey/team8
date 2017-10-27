@@ -31,8 +31,10 @@ public class Game {
     }
 
     public void shuffle() {
+        //Seed random number generator
+        long seed = System.nanoTime();
         // shuffles the deck so that it is random
-        Collections.shuffle(deck);
+        Collections.shuffle(deck, new Random(seed));
     }
 
 	/*
