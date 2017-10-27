@@ -21,6 +21,7 @@ public class Game {
       }
     }
 
+    //This builds the deck by adding cards
     public void buildDeck() {
         for(int i = 2; i < 15; i++){
             deck.add(new Card(i,Suit.Clubs));
@@ -30,6 +31,7 @@ public class Game {
         }
     }
 
+    //Shuffles the deck for gameplay
     public void shuffle() {
         //Seed random number generator
         long seed = System.nanoTime();
@@ -52,6 +54,7 @@ public class Game {
         }
     }
 
+    //This removes the card based on the rules of aces high
     public void remove(int columnNumber) {
         Card c = getTopCard(columnNumber);
         boolean removeCard = false;
@@ -75,6 +78,7 @@ public class Game {
         //Otherwise TODO:Add error message if not possible to remove
     }
 
+    //If column has cards, return true, otherwise false
     private boolean columnHasCards(int columnNumber) {
         // if empty return true, else false
         if(this.cols.get(columnNumber).size()>0){
@@ -87,7 +91,7 @@ public class Game {
         return this.cols.get(columnNumber).get(this.cols.get(columnNumber).size()-1);
     }
 
-
+    //Moves a card from one column to another
     public void move(int columnFrom, int columnTo) {
         // remove the top card from the columnFrom column, add it to the columnTo column
         // save top card
