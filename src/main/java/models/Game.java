@@ -21,6 +21,7 @@ public class Game {
       }
     }
 
+    //This builds the deck by adding cards
     public void buildDeck() {
         for(int i = 2; i < 15; i++){
             deck.add(new Card(i,Suit.Clubs));
@@ -30,9 +31,12 @@ public class Game {
         }
     }
 
+    //Shuffles the deck for gameplay
     public void shuffle() {
+        //Seed random number generator
+        long seed = System.nanoTime();
         // shuffles the deck so that it is random
-        Collections.shuffle(deck);
+        Collections.shuffle(deck, new Random(seed));
     }
 
 	/*
@@ -50,25 +54,44 @@ public class Game {
         }
     }
 
+    //This removes the card based on the rules of aces high
     public void remove(int columnNumber) {
-        // remove the top card from the indicated column
-        //Check if empty
-        if(!columnHasCards(columnNumber)){
-            removeCardFromCol(columnNumber);
+        Card c = getTopCard(columnNumber);
+        boolean removeCard = false;
+        //Go thru columns to see if there is a larger card of same suit
+        for (int i = 0; i < 4; i++) {
+            if (i != columnNumber) {
+                if (columnHasCards(i)) {
+                    Card compare = getTopCard(i);
+                    if (compare.getSuit() == c.getSuit()) {
+                        if (compare.getValue() > c.getValue()) {
+                            removeCard = true;
+                        }
+                    }
+                }
+            }
         }
-        //Otherwise just exit
+        //If there is, remove the card
+        if (removeCard) {
+            this.cols.get(columnNumber).remove(this.cols.get(columnNumber).size() - 1);
+        }
+        //Otherwise TODO:Add error message if not possible to remove
     }
 
+    //If column has cards, return true, otherwise false
     private boolean columnHasCards(int columnNumber) {
         // if empty return true, else false
-        return cols.get(columnNumber).isEmpty();
+        if(this.cols.get(columnNumber).size()>0){
+            return true;
+        }
+        return false;
     }
 
     private Card getTopCard(int columnNumber) {
         return this.cols.get(columnNumber).get(this.cols.get(columnNumber).size()-1);
     }
 
-
+    //Moves a card from one column to another
     public void move(int columnFrom, int columnTo) {
         // remove the top card from the columnFrom column, add it to the columnTo column
         // save top card
