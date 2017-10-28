@@ -94,19 +94,99 @@ console.log(game);
 $( '.columnOfCards .cardLocation' ).html("");
 
     $.each(game.cols[0], function( key, val ) {
-        $( '#c0 .l'+key ).html(val.value + val.suit);
+      var x;
+      if(val.value > 10){
+        if (val.value == 14){
+          x = "ace";
+        }
+        if (val.value == 11){
+          x = "jack";
+        }
+        else if (val.value == 12) {
+          x = "queen";
+        }
+        else if (val.value == 13) {
+          x = "king";
+        }
+      }
+      else {
+        x = val.value;
+      }
+      var lnk = ("https://raw.githubusercontent.com/hayeah/playing-cards-assets/master/png/"+x+"_of_"+val.suit+".png").toLowerCase();
+      $( '#c0 .l'+key ).html('<img src='+lnk+' height="120">');
+        //$( '#c0 .l'+key ).html(val.value + val.suit);
     });
 
  $.each(game.cols[1], function( key, val ) {
-        $( '#c1 .l'+key ).html(val.value + val.suit);
+   var x;
+   if(val.value > 10){
+     if (val.value == 14){
+       x = "ace";
+     }
+     if (val.value == 11){
+       x = "jack";
+     }
+     else if (val.value == 12) {
+       x = "queen";
+     }
+     else if (val.value == 13) {
+       x = "king";
+     }
+   }
+   else {
+     x = val.value;
+   }
+   var lnk = ("https://raw.githubusercontent.com/hayeah/playing-cards-assets/master/png/"+x+"_of_"+val.suit+".png").toLowerCase();
+   $( '#c1 .l'+key ).html('<img src='+lnk+' height="120">');
+        //$( '#c1 .l'+key ).html(val.value + val.suit);
     });
 
  $.each(game.cols[2], function( key, val ) {
-        $( '#c2 .l'+key ).html(val.value + val.suit);
+   var x;
+   if(val.value > 10){
+     if (val.value == 14){
+       x = "ace";
+     }
+     if (val.value == 11){
+       x = "jack";
+     }
+     else if (val.value == 12) {
+       x = "queen";
+     }
+     else if (val.value == 13) {
+       x = "king";
+     }
+   }
+   else {
+     x = val.value;
+   }
+   var lnk = ("https://raw.githubusercontent.com/hayeah/playing-cards-assets/master/png/"+x+"_of_"+val.suit+".png").toLowerCase();
+   $( '#c2 .l'+key ).html('<img src='+lnk+' height="120">');
+      //  $( '#c2 .l'+key ).html(val.value + val.suit);
     });
 
  $.each(game.cols[3], function( key, val ) {
-        $( '#c3 .l'+key ).html(val.value + val.suit);
+   var x;
+   if(val.value > 10){
+     if (val.value == 14){
+       x = "ace";
+     }
+     if (val.value == 11){
+       x = "jack";
+     }
+     else if (val.value == 12) {
+       x = "queen";
+     }
+     else if (val.value == 13) {
+       x = "king";
+     }
+   }
+   else {
+     x = val.value;
+   }
+   var lnk = ("https://raw.githubusercontent.com/hayeah/playing-cards-assets/master/png/"+x+"_of_"+val.suit+".png").toLowerCase();
+   $( '#c3 .l'+key ).html('<img src='+lnk+' height="120">');
+      //  $( '#c3 .l'+key ).html(val.value + val.suit);
     });
 
 
