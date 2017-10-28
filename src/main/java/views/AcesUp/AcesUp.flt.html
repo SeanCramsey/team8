@@ -119,7 +119,7 @@ $( '.columnOfCards .cardLocation' ).html("");
         x = val.value;
       }
       var lnk = ("https://raw.githubusercontent.com/hayeah/playing-cards-assets/master/png/"+x+"_of_"+val.suit+".png").toLowerCase();
-      $( '#c0 .l'+key ).html(<img src=lnk>);
+      $( '#c0 .l'+key ).html("<img src=lnk>");
         //$( '#c0 .l'+key ).html(val.value + val.suit);
     });
 
