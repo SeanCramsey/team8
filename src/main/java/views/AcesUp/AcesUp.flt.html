@@ -6,12 +6,6 @@
 <body>
 
 <table>
-    <tr class="title">
-        <td>Column0</td>
-        <td >Column1</td>
-        <td >Column2</td>
-        <td >Column3</td>
-    </tr>
 
     <tr><td class="columnOfCards" id="c0">
         <table>
@@ -89,9 +83,6 @@
 </table>
 
 <button id="dealButton">Deal</button>
-<BR>Remove from: <button id="Remove1">Column1</button><button id="Remove2">Column2</button><button id="Remove3">Column3</button><button id="Remove4">Column4</button>
-
-<BR>Move from column <input type="text" id="from_col"  /> to <input type="text" id="to_col"  /> <button id="moveButton">Move</button>
 
 <script>
 
@@ -157,20 +148,157 @@ dataType:"json",
 
 }
 
+var col0 = 0;
+var col1 = 0;
+var col2 = 0;
+var col3 = 0;
 
-$("#Remove1").click(function(){
-    removeCard(0);
-});
-$("#Remove2").click(function(){
-    removeCard(1);
-});
-$("#Remove3").click(function(){
-    removeCard(2);
-});
-$("#Remove4").click(function(){
-    removeCard(3);
+$("#c0").click(function(){
+    if(col0 == 1){
+        removeCard(0);
+        col0 = 0;
+        col1 = 0;
+        col2 = 0;
+        col3 = 0;
+    }
+    else if(col1 == 1){
+        moveCard(1,0);
+        col0 = 0;
+        col1 = 0;
+        col2 = 0;
+        col3 = 0;
+    }
+    else if(col2 == 1){
+        moveCard(2,0);
+        col0 = 0;
+        col1 = 0;
+        col2 = 0;
+        col3 = 0;
+    }
+    else if(col3 == 1){
+        moveCard(3,0);
+        col0 = 0;
+        col1 = 0;
+        col2 = 0;
+        col3 = 0;
+    }
+    else{
+        col0 = 1;
+    }
 });
 
+$("#c1").click(function(){
+    if(col1 == 1){
+        removeCard(1);
+        col0 = 0;
+        col1 = 0;
+        col2 = 0;
+        col3 = 0;
+    }
+    else if(col0 == 1){
+        moveCard(0,1);
+        col0 = 0;
+        col1 = 0;
+        col2 = 0;
+        col3 = 0;
+    }
+    else if(col2 == 1){
+        moveCard(2,1);
+        col0 = 0;
+        col1 = 0;
+        col2 = 0;
+        col3 = 0;
+    }
+    else if(col3 == 1){
+        moveCard(3,1);
+        col0 = 0;
+        col1 = 0;
+        col2 = 0;
+        col3 = 0;
+    }
+    else{
+        col1 = 1;
+    }
+});
+
+$("#c2").click(function(){
+    if(col2 == 1){
+        removeCard(2);
+        col0 = 0;
+        col1 = 0;
+        col2 = 0;
+        col3 = 0;
+    }
+    else if(col0 == 1){
+        moveCard(0,2);
+        col0 = 0;
+        col1 = 0;
+        col2 = 0;
+        col3 = 0;
+    }
+    else if(col1 == 1){
+        moveCard(1,2);
+        col0 = 0;
+        col1 = 0;
+        col2 = 0;
+        col3 = 0;
+    }
+    else if(col3 == 1){
+        moveCard(3,2);
+        col0 = 0;
+        col1 = 0;
+        col2 = 0;
+        col3 = 0;
+    }
+    else{
+        col2 = 1;
+    }
+});
+
+$("#c3").click(function(){
+    if(col3 == 1){
+        removeCard(3);
+        col1 = 0;
+    }
+    else if(col0 == 1){
+        moveCard(0,3);
+        col0 = 0;
+        col1 = 0;
+        col2 = 0;
+        col3 = 0;
+    }
+    else if(col1 == 1){
+        moveCard(1,3);
+        col0 = 0;
+        col1 = 0;
+        col2 = 0;
+        col3 = 0;
+    }
+    else if(col2 == 1){
+        moveCard(2,3);
+        col0 = 0;
+        col1 = 0;
+        col2 = 0;
+        col3 = 0;
+    }
+    else{
+        col3 = 1;
+    }
+});
+
+
+function moveCard(colFrom,colTo){
+$.ajax({
+  type: "POST",
+  url: "/moveCard/"+colFrom+"/"+colTo,
+  data: JSON.stringify(game),
+  success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
+        game = data;
+        display(data);},
+  contentType:"application/json; charset=utf-8",
+  dataType:"json",
+});
+}
 
 $("#moveButton").click(function(){
 var colFrom = $("#from_col").val();
