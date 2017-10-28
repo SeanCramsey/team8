@@ -16,9 +16,7 @@ width:500px;
 }
 
 td{
-width:100px;
-height: 20px;
-text-align: center;
+height:124px;
 }
 
 .title{
@@ -26,11 +24,12 @@ font-weight: bold;
 }
 
 #dealButton{
-width: 100px;
-height: 20px;
+height: 120px;
 position: fixed;
 right: 50px;
 bottom: 50px;
+background: darkgreen;
+border: none;
 }
 
 .cardLocation{
