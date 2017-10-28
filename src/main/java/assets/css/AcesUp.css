@@ -1,18 +1,39 @@
+h1{
+text-align: center;
+}
+
+body{
+background: darkgreen;
+}
+
+table{
+margin: auto;
+empty-cells: hide;
+}
+
 tr{
 width:500px;
 }
 
 td{
 width:100px;
-height:20px;
-text-align:center;
+height: 20px;
+text-align: center;
 }
 
 .title{
 font-weight: bold;
 }
 
-.cardLocation{
+#dealButton{
 width: 100px;
-background-color:#F0F0F0;
+height: 20px;
+position: fixed;
+right: 50px;
+bottom: 50px;
+}
+
+.cardLocation{
+border: 1px solid black;
+background-color: white;
 }
