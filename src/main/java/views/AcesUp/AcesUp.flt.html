@@ -155,6 +155,7 @@ var col3 = 0;
 
 $("#c0").click(function(){
     if(col0 == 1){
+        $("#c0").css("background-color", "darkgreen");
         removeCard(0);
         col0 = 0;
         col1 = 0;
@@ -162,6 +163,7 @@ $("#c0").click(function(){
         col3 = 0;
     }
     else if(col1 == 1){
+        $("#c1").css("background-color", "darkgreen");
         moveCard(1,0);
         col0 = 0;
         col1 = 0;
@@ -169,6 +171,7 @@ $("#c0").click(function(){
         col3 = 0;
     }
     else if(col2 == 1){
+        $("#c2").css("background-color", "darkgreen");
         moveCard(2,0);
         col0 = 0;
         col1 = 0;
@@ -176,6 +179,7 @@ $("#c0").click(function(){
         col3 = 0;
     }
     else if(col3 == 1){
+        $("#c3").css("background-color", "darkgreen");
         moveCard(3,0);
         col0 = 0;
         col1 = 0;
@@ -183,12 +187,14 @@ $("#c0").click(function(){
         col3 = 0;
     }
     else{
+        $("#c0").css("background-color", "red");
         col0 = 1;
     }
 });
 
 $("#c1").click(function(){
     if(col1 == 1){
+        $("#c1").css("background-color", "darkgreen");
         removeCard(1);
         col0 = 0;
         col1 = 0;
@@ -196,6 +202,7 @@ $("#c1").click(function(){
         col3 = 0;
     }
     else if(col0 == 1){
+        $("#c0").css("background-color", "darkgreen");
         moveCard(0,1);
         col0 = 0;
         col1 = 0;
@@ -203,6 +210,7 @@ $("#c1").click(function(){
         col3 = 0;
     }
     else if(col2 == 1){
+        $("#c2").css("background-color", "darkgreen");
         moveCard(2,1);
         col0 = 0;
         col1 = 0;
@@ -210,6 +218,7 @@ $("#c1").click(function(){
         col3 = 0;
     }
     else if(col3 == 1){
+        $("#c3").css("background-color", "darkgreen");
         moveCard(3,1);
         col0 = 0;
         col1 = 0;
@@ -217,12 +226,14 @@ $("#c1").click(function(){
         col3 = 0;
     }
     else{
+        $("#c1").css("background-color", "red");
         col1 = 1;
     }
 });
 
 $("#c2").click(function(){
     if(col2 == 1){
+        $("#c2").css("background-color", "darkgreen");
         removeCard(2);
         col0 = 0;
         col1 = 0;
@@ -230,6 +241,7 @@ $("#c2").click(function(){
         col3 = 0;
     }
     else if(col0 == 1){
+        $("#c0").css("background-color", "darkgreen");
         moveCard(0,2);
         col0 = 0;
         col1 = 0;
@@ -237,6 +249,7 @@ $("#c2").click(function(){
         col3 = 0;
     }
     else if(col1 == 1){
+        $("#c1").css("background-color", "darkgreen");
         moveCard(1,2);
         col0 = 0;
         col1 = 0;
@@ -244,6 +257,7 @@ $("#c2").click(function(){
         col3 = 0;
     }
     else if(col3 == 1){
+        $("#c3").css("background-color", "darkgreen");
         moveCard(3,2);
         col0 = 0;
         col1 = 0;
@@ -251,6 +265,7 @@ $("#c2").click(function(){
         col3 = 0;
     }
     else{
+        $("#c2").css("background-color", "red");
         col2 = 1;
     }
 });
@@ -261,6 +276,7 @@ $("#c3").click(function(){
         col1 = 0;
     }
     else if(col0 == 1){
+        $("#c0").css("background-color", "darkgreen");
         moveCard(0,3);
         col0 = 0;
         col1 = 0;
@@ -268,6 +284,7 @@ $("#c3").click(function(){
         col3 = 0;
     }
     else if(col1 == 1){
+        $("#c1").css("background-color", "darkgreen");
         moveCard(1,3);
         col0 = 0;
         col1 = 0;
@@ -275,6 +292,7 @@ $("#c3").click(function(){
         col3 = 0;
     }
     else if(col2 == 1){
+        $("#c2").css("background-color", "darkgreen");
         moveCard(2,3);
         col0 = 0;
         col1 = 0;
@@ -282,6 +300,7 @@ $("#c3").click(function(){
         col3 = 0;
     }
     else{
+        $("#c3").css("background-color", "red");
         col3 = 1;
     }
 });
