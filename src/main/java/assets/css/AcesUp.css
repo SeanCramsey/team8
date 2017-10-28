@@ -1,5 +1,12 @@
 h1{
+margin: auto;
+width: 200px;
+border: 2px;
+border-radius: 20px;
 text-align: center;
+background-color: black;
+color: white;
+font-family: "Helvetica", sans-serif;
 }
 
 body{
