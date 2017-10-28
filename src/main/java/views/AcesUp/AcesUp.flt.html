@@ -103,7 +103,22 @@ console.log(game);
 $( '.columnOfCards .cardLocation' ).html("");
 
     $.each(game.cols[0], function( key, val ) {
-      $( '#c0 .l'+key ).html(<img src=val.img>);
+      var x;
+      if(val.value > 10){
+        if (val.value == 11){
+          x = "jack";
+        }
+        else if (val.value == 12) {
+          x = "queen";
+        }
+        else if (val.value == 13) {
+          x = "king";
+        }
+      }
+      else {
+        x = val.value;
+      }
+      var img = ("https://raw.githubusercontent.com/hayeah/playing-cards-assets/master/png/"+x+"_of_"+val.suit+".png").toLowerCase();
         //$( '#c0 .l'+key ).html(val.value + val.suit);
     });
 

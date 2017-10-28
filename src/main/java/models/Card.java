@@ -12,13 +12,13 @@ import java.io.Serializable;
 public class Card implements Serializable {
     public final int value;
     public final Suit suit;
-    public final String img;
+    //public final String img;
 
     @JsonCreator
     public Card(@JsonProperty("value") int value, @JsonProperty("suit") Suit suit) {
         this.value = value;
         this.suit = suit;
-        this.img = ("https://raw.githubusercontent.com/hayeah/playing-cards-assets/master/png/" + value + "_of_" + suit + ".png").toLowerCase();
+        //this.img = ("https://raw.githubusercontent.com/hayeah/playing-cards-assets/master/png/" + value + "_of_" + suit + ".png").toLowerCase();
 
     }
 
