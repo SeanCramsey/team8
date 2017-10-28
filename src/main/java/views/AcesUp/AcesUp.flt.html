@@ -1,9 +1,5 @@
 <h1>Aces Up!</h1>
 
-<p> &spades; <p>
-<p> &clubs; <p>
-<p> &hearts; <p>
-<p> &diams; <p>
 <link href="/assets/css/AcesUp.css" rel="stylesheet">
 <script type="text/javascript" src="/assets/webjars/jquery/2.1.3/jquery.js"></script>
 
@@ -135,7 +131,7 @@ $( '.columnOfCards .cardLocation' ).html("");
      x = val.value;
    }
    var lnk = ("https://raw.githubusercontent.com/hayeah/playing-cards-assets/master/png/"+x+"_of_"+val.suit+".png").toLowerCase();
-   $( '#c0 .l'+key ).html('<img src='+lnk+' height="120">');
+   $( '#c1 .l'+key ).html('<img src='+lnk+' height="120">');
         //$( '#c1 .l'+key ).html(val.value + val.suit);
     });
 
@@ -156,7 +152,7 @@ $( '.columnOfCards .cardLocation' ).html("");
      x = val.value;
    }
    var lnk = ("https://raw.githubusercontent.com/hayeah/playing-cards-assets/master/png/"+x+"_of_"+val.suit+".png").toLowerCase();
-   $( '#c0 .l'+key ).html('<img src='+lnk+' height="120">');
+   $( '#c2 .l'+key ).html('<img src='+lnk+' height="120">');
       //  $( '#c2 .l'+key ).html(val.value + val.suit);
     });
 
@@ -177,7 +173,7 @@ $( '.columnOfCards .cardLocation' ).html("");
      x = val.value;
    }
    var lnk = ("https://raw.githubusercontent.com/hayeah/playing-cards-assets/master/png/"+x+"_of_"+val.suit+".png").toLowerCase();
-   $( '#c0 .l'+key ).html('<img src='+lnk+' height="120">');
+   $( '#c3 .l'+key ).html('<img src='+lnk+' height="120">');
       //  $( '#c3 .l'+key ).html(val.value + val.suit);
     });
 
