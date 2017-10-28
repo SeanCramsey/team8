@@ -1,5 +1,12 @@
 h1{
+margin: auto;
+width: 200px;
+border: 2px;
+border-radius: 20px;
 text-align: center;
+background-color: black;
+color: white;
+font-family: "Helvetica", sans-serif;
 }
 
 body{
@@ -16,9 +23,7 @@ width:500px;
 }
 
 td{
-width:100px;
-height: 20px;
-text-align: center;
+height:124px;
 }
 
 .title{
@@ -26,11 +31,12 @@ font-weight: bold;
 }
 
 #dealButton{
-width: 100px;
-height: 20px;
+height: 120px;
 position: fixed;
 right: 50px;
 bottom: 50px;
+background: darkgreen;
+border: none;
 }
 
 .cardLocation{
