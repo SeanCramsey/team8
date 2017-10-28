@@ -103,7 +103,8 @@ console.log(game);
 $( '.columnOfCards .cardLocation' ).html("");
 
     $.each(game.cols[0], function( key, val ) {
-        $( '#c0 .l'+key ).html(val.value + val.suit);
+      $( '#c0 .l'+key ).html(<img src=val.img>);
+        //$( '#c0 .l'+key ).html(val.value + val.suit);
     });
 
  $.each(game.cols[1], function( key, val ) {
