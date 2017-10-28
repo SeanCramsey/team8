@@ -96,6 +96,9 @@ $( '.columnOfCards .cardLocation' ).html("");
     $.each(game.cols[0], function( key, val ) {
       var x;
       if(val.value > 10){
+        if (val.value == 1){
+          x = "ace";
+        }
         if (val.value == 11){
           x = "jack";
         }
@@ -117,6 +120,9 @@ $( '.columnOfCards .cardLocation' ).html("");
  $.each(game.cols[1], function( key, val ) {
    var x;
    if(val.value > 10){
+     if (val.value == 1){
+       x = "ace";
+     }
      if (val.value == 11){
        x = "jack";
      }
@@ -138,6 +144,9 @@ $( '.columnOfCards .cardLocation' ).html("");
  $.each(game.cols[2], function( key, val ) {
    var x;
    if(val.value > 10){
+     if (val.value == 1){
+       x = "ace";
+     }
      if (val.value == 11){
        x = "jack";
      }
@@ -159,6 +168,9 @@ $( '.columnOfCards .cardLocation' ).html("");
  $.each(game.cols[3], function( key, val ) {
    var x;
    if(val.value > 10){
+     if (val.value == 1){
+       x = "ace";
+     }
      if (val.value == 11){
        x = "jack";
      }
