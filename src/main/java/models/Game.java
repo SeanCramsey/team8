@@ -11,23 +11,23 @@ public class Game {
 
     public java.util.List<Card> deck = new ArrayList<>();
 
-    public java.util.List<java.util.List<Card>> cols = new ArrayList<>(4);
+    public java.util.List<CardCollection> cols = new ArrayList<>(4);
 
 
     public Game(){
     // initialize a new game such that each column can store cards
       for ( int i = 0; i < 4; i++){
-        this.cols.add(i, new ArrayList<Card>());
+        this.cols.add(i, new CardCollection());
       }
     }
 
     //This builds the deck by adding cards
     public void buildDeck() {
-        for(int i = 2; i < 15; i++){
-            deck.add(new Card(i,Suit.Clubs));
-            deck.add(new Card(i,Suit.Hearts));
-            deck.add(new Card(i,Suit.Diamonds));
-            deck.add(new Card(i,Suit.Spades));
+        for(int i = 2; i < 15; i++) {
+            deck.add(new Card(i, Suit.Clubs));
+            deck.add(new Card(i, Suit.Hearts));
+            deck.add(new Card(i, Suit.Diamonds));
+            deck.add(new Card(i, Suit.Spades));
         }
     }
 
