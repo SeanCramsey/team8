@@ -45,16 +45,16 @@ public class CardCollection {
     }
 
 
-    /**
-     * Returns the top card on the stack, but does not remove it
-     *
-     */
-    public Card getTopCard() {
-//        if(cards.size() == 0){
-//            return null;
-//        }
-        return cards.get(topIndex);
-    }
+//    /**
+//     * Returns the top card on the stack, but does not remove it
+//     *
+//     */
+//    public Card getTopCard() {
+////        if(cards.size() == 0){
+////            return null;
+////        }
+//        return cards.get(topIndex);
+//    }
 
     /**
      * Adds a card to the card collection
@@ -106,12 +106,12 @@ public class CardCollection {
      * @param int index of card to remove
      */
     public int remove (int index){
-        if(index > topIndex){
-            return 0;
-        }
-        if(index < 0) {
-            return 0;
-        }
+//        if(index > topIndex){
+//            return 0;
+//        }
+//        if(index < 0) {
+//            return 0;
+//        }
         cards.remove(index);
         return 1;
     }
