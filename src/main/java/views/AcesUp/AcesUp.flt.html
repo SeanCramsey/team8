@@ -97,13 +97,13 @@ var cardMarginTop = '-90px';
 var sID; //id of selected element
 var colFrom; //column selected card was grabbed from
 var colTo; //column card is (attempted at) being assinged to
-var position; //original position of selected element
+var position = null; //original position of selected element
 var isMove = false; //boolean which stops position variable being set
 
 function display(game) {
   console.log(game);
   $( '.cardLocation' ).removeAttr('id'); //should clear all card id's
-  //<--if this doesnt work put * here and remove the one below
+  /*/<--if this doesnt work put * here and remove the one below
   $.each(game.cols, function( i, v ){
     $.each(v, function( key, value){
       var x;
@@ -143,7 +143,7 @@ function display(game) {
     });
   });/**/
 
-/*/<-- this one
+//<-- this one
 $( '.columnOfCards .cardLocation' ).html("");
   $.each(game.cols[0], function( key, val ) {
       var x;
