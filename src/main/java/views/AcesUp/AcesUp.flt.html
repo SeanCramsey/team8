@@ -444,8 +444,8 @@ $(document).mouseup(function(e) { //release anywhere on the page
 //Move held card around**********************************************//
 $(document).bind('mousemove', function(e) {
   $(sID).css({
-    left: e.pageX - (cardHeight / 2),
-    top: e.pageY + (cardWidth / 2),
+    left: e.pageX - (cardWidth / 2),
+    top: e.pageY + (cardHeight / 2),
   });
 });
 //*********************************************************************//
