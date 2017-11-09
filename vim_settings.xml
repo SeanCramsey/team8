@@ -12,7 +12,13 @@
       <file name="$USER_HOME$/Desktop/team8 Stuff/team8-master/src/main/java/controllers/ApplicationController.java" timestamp="1510099074211">
         <mark key="[" line="53" column="8" />
       </file>
-      <file name="$USER_HOME$/Desktop/team8 Stuff/team8-master/src/main/java/views/AcesUp/AcesUp.flt.html" timestamp="1510101043763" />
+      <file name="$USER_HOME$/Desktop/team8 Stuff/team8-master/src/main/java/views/AcesUp/AcesUp.flt.html" timestamp="1510181251224">
+        <mark key="[" line="226" column="0" />
+        <mark key="]" line="216" column="0" />
+        <mark key="^" line="216" column="0" />
+        <mark key="." line="216" column="0" />
+        <mark key="o" line="190" column="0" />
+      </file>
     </filemarks>
     <jumps />
     <registers />
@@ -29,6 +35,15 @@
     <shortcut-conflicts>
       <shortcut-conflict owner="vim">
         <text>ctrl pressed V</text>
+      </shortcut-conflict>
+      <shortcut-conflict owner="vim">
+        <text>ctrl pressed F</text>
+      </shortcut-conflict>
+      <shortcut-conflict owner="vim">
+        <text>ctrl pressed C</text>
+      </shortcut-conflict>
+      <shortcut-conflict owner="vim">
+        <text>ctrl pressed S</text>
       </shortcut-conflict>
     </shortcut-conflicts>
   </component>
