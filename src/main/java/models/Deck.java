@@ -6,9 +6,7 @@ import java.util.Random;
 
 public class Deck extends CardCollection{
 
-    public java.util.ArrayList<Card> cards;
-
-    public void Deck(){
+    public Deck(){
         cards = new ArrayList<Card>();
         for(int i = 2; i < 15; i++){
             cards.add(new Card(i, Suit.Clubs));
@@ -25,16 +23,5 @@ public class Deck extends CardCollection{
         long seed = System.nanoTime();
         Collections.shuffle(cards, new Random(seed));
     }
-
-
-    /*
-    get removes and returns the top card from the deck.
-    */
-//    public Card get(){
-//        Card tempCard;
-//        tempCard = cards.get(0);
-//        cards.remove(0);
-//        return tempCard;
-//    }
 
 }

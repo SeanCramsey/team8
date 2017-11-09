@@ -9,7 +9,7 @@ import java.util.Random;
  */
 public class Game {
 
-    Deck deck = new Deck();
+    public Deck deck;
 
     public java.util.List<CardCollection> cols = new ArrayList<>(4);
 
@@ -19,6 +19,20 @@ public class Game {
       for ( int i = 0; i < 4; i++){
         this.cols.add(i, new CardCollection());
       }
+    }
+
+    /*
+    buildDeck creates a new deck object
+     */
+    public void buildDeck(){
+        deck = new Deck();
+    }
+
+    /*
+    shuffle uses the deck class to shuffle the deck
+     */
+    public void shuffle(){
+        deck.shuffle();
     }
 
 	/*
