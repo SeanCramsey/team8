@@ -104,7 +104,7 @@ function display(game) {
   console.log(game);
 
   $.each(game.cols, function( i, v ){
-    $.each(v, function( key, val){
+    $.each(v.cards, function( key, val){
       var x;
       if(val.value > 10){
         if (val.value == 11){
