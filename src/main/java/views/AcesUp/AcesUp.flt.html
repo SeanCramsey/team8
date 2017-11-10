@@ -227,7 +227,7 @@ $('div').mousedown(function(e) {
         return false; //break each loop
       }
     });
-    if (e.target.className == ('cardLocation l' + (game.cols[colFrom].length - 1) )) {
+    if (e.target.className == ('cardLocation l' + (game.cols[colFrom].cards.length - 1) )) {
       sID = '#' + e.target.id;
     }
     $(sID).css({
@@ -297,8 +297,6 @@ $(document).mousemove(function(e) {
 });
 //*********************************************************************//
 </script>
-
-
 
 </body>
 </html>
