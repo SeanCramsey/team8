@@ -19,7 +19,7 @@ table{
 }
 .columnOfCards {
   vertical-align: top;
-  width: auto;
+  width: 150px;
   float: left;
 }
 .emptyLocation {
@@ -32,11 +32,11 @@ table{
 
 }
 #discard {
-  height: 120px;
-  width: 82px;
+  height: 350px;
+  width: 250px;
   position: fixed;
   right: 50px;
-  top: 10px;
+  top: 50px;
   border: red 2px dotted;
   text-align: center;
   background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/No_sign_Right.svg/1000px-No_sign_Right.svg.png");
@@ -58,4 +58,6 @@ table{
   background-position: center;
   border: black solid 1px;
   border-radius: 10px;
+  color: white;
+
 }

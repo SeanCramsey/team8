@@ -76,23 +76,21 @@
   </td>
 </table>
 <div id='discard'></div>
-<button id="dealButton"></button>
+<button id="dealButton">48</button>
 <script>
 
 var game;
 
 //easy card adjustment variables
 //probably should move the css assignment below into the css file itself for the final, up to you guys
-var cardHeight = '120px';
-var cardWidth = '82px';
+var cardHeight = 120;
+var cardWidth = cardHeight*.68;
 var cardBackgroundColor = 'white';
 var cardBorder = 'black solid 1px';
 var cardBorderSelected = 'red solid 2px';
 var cardBorderRadius = '5px';
-var cardTop = '-30px';
-var cardLeft = '0px';
-var cardMarginTop = '-90px';
-
+var cardMarginTop = -cardHeight;
+var marginOffset = 30;
 //Card movement variables
 var sID; //id of selected element
 var colFrom; //column selected card was grabbed from
@@ -100,8 +98,23 @@ var colTo; //column card is (attempted at) being assinged to
 var position = null; //original position of selected element
 var isMove = false; //boolean which stops position variable being set
 
+var halfHeight = cardHeight/2;
+
+var lastCardCenterY = [ halfHeight,
+                        halfHeight,
+                        halfHeight,
+                        halfHeight ];
+var lastCardCenterX = -cardWidth/2;
+var lastCardIndex = [0,0,0,0];
+var curMousePos = {x: -1, y: -1};
+var dist = 0;
+
+var score = 0;
+
 function display(game) {
   console.log(game);
+
+  console.log(lastCardIndex);
 
   $.each(game.cols, function( i, v ){
     $.each(v.cards, function( key, val){
@@ -133,10 +146,8 @@ function display(game) {
         'width': cardWidth,
         'border': cardBorder,
         'border-radius': cardBorderRadius,
-        'position': 'relative',
-        'top': cardTop,
-        'left': cardLeft,
-        'margin-top': cardMarginTop,
+        'position': 'absolute',
+        'margin-top': cardMarginTop + (marginOffset * key),
         'z-index': '1',
       });
     });
@@ -149,6 +160,19 @@ $.getJSON("http://localhost:8080/game", function( data ) {
 });
 
 $("#dealButton").click(function(){
+
+  if(game.deck.cards.length == 4){
+    $('#dealButton').css({
+      'display':'none',
+    });
+  } else {
+    $('#dealButton').html(game.deck.cards.length - 4);
+  }
+  $.each(lastCardIndex, function(i,v){
+    lastCardIndex[i] += 1;
+    lastCardCenterY[i] = -( marginOffset * lastCardIndex[i] ) + halfHeight;
+  });
+
   $.ajax({
     type: "POST",
     url: "/dealGame",
@@ -161,8 +185,33 @@ $("#dealButton").click(function(){
   });
 });
 
+function canRemove(colNumber){
+    //lastCardIndex[colNumber];
+    var c = game.cols[colNumber].cards[lastCardIndex[colNumber]];
+    var removeCard = false;
+    console.log(c);
+    //Go thru columns to see if there is a larger card of same suit
+    for (var i = 0; i < 4; i++) {
+        if (i != colNumber) {
+            if (lastCardIndex[i] > -1) {
+                var compare = game.cols[i].cards[lastCardIndex[i]];
+                if (compare.suit == c.suit) {
+                    if (compare.value > c.value){
+                        removeCard = true;
+                    }
+                }
+            }
+        }
+    }/**/
+    return removeCard;
+}
+
 function removeCard(colNumber){
+  score+=1;
+  lastCardIndex[colNumber]--;
+  lastCardCenterY[colNumber] = -( marginOffset * lastCardIndex[colNumber] ) + halfHeight;
   $( sID ).removeAttr('style id'); //kill selected card
+
   $.ajax({
   type: "POST",
   url: "/removeCard/"+colNumber,
@@ -176,7 +225,13 @@ function removeCard(colNumber){
 }
 
 function moveCard(cF,cT){
+
+  lastCardIndex[cF]--;
+  lastCardCenterY[cF] = -( marginOffset * lastCardIndex[cF] ) + halfHeight;
+  lastCardIndex[cT]++;
+  lastCardCenterY[cT] = -( marginOffset * lastCardIndex[cT] ) + halfHeight;
   $( sID ).removeAttr('style id'); //kill selected card
+
   $.ajax({
     type: "POST",
     url: "/moveCard/"+cF+"/"+cT,
@@ -227,34 +282,47 @@ $('div').mousedown(function(e) {
         return false; //break each loop
       }
     });
-    if (e.target.className == ('cardLocation l' + (game.cols[colFrom].cards.length - 1) )) {
+    if (e.target.className == ('cardLocation l' + lastCardIndex[colFrom])) {
       sID = '#' + e.target.id;
-    }
+      if (!isMove) { //store position if prev mousedown executed
+        position = $(sID).position();
+        isMove = true;
+      }
+    } /**/
     $(sID).css({
-      'position': 'absolute',
+      'top': curMousePos.y + lastCardCenterY[colFrom],
+      'left': curMousePos.x + lastCardCenterX,
       'border': cardBorderSelected,
       'z-index': '999',
     });
-    if (!isMove) { //store position if prev mousedown executed
-      position = $(sID).position();
-      isMove = true;
-    } /**/
   }
 });
 //drop card ***********************************************************//
 $(document).mouseup(function(e) { //release anywhere on the page
   if(sID){
-    isMove = false;
-    $(sID).css({
-      'position': 'relative',
-      left: position.left,
-      top: position.top,
+     //console.log(dist);
+     /*
+    $(sID).animate({
+      'left': position.left,
+      'top': position.top,
+      'z-index':'1',
+    },
+      dist*.25, 'linear',
+    );/**/
+
+    $(sID).css({ //move card out of the way long enough to grab the info of the element behind it
+      'left': position.left,
+      'top': position.top,
+      'display':'none',
       'border': cardBorder,
       'z-index': '1',
-    });
+    });/**/
     var elem = document.elementFromPoint(e.pageX, e.pageY); //get elemnent at mouse pointer
+    $(sID).css({
+      'display':'block',
+    });
     var tID;
-    if ($(elem).is('.cardLocation') || $(elem).is('.emptyLocation')) {
+    if ($(elem).is('.emptyLocation')) {
       $.each($(elem).parents(), function(i, v) {
         if (v.className == "columnOfCards") {
           tID = v.id;
@@ -267,33 +335,34 @@ $(document).mouseup(function(e) { //release anywhere on the page
           } else if (tID == 'c3') {
             colTo = 3;
           }
-          if ($(elem).is('.emptyLocation')) {
-            //alert('move to empty: ' + colTo);
             if(sID.includes('14')){ //is ace, applies "new rule"
               moveCard(colFrom, colTo);
             }
-          } else { //standard move
-            //alert("move from: " + colFrom + " fo: " + colTo);
-            /*TODO modify to fit with new rule*/
-            moveCard(colFrom, colTo);
-          }
           return false; //break each loop
         }
       });
     } else if ($(elem).is('#discard')) {
       //do discard
-      removeCard(colFrom);
+      if(canRemove(colFrom)){
+        removeCard(colFrom);
+        $('#discard').html(score);
+      } else {
+        console.log('Cant Delete Card');
+      }
     }
-    colTo = colFrom = sID = null; //release card //unset to and from
+    colTo = colFrom =sID =null; //release card //unset to and from
+    isMove = false;
   }
 });
 //Move held card around**********************************************//
 $(document).mousemove(function(e) {
-  //alert(e.pageX +', '+ e.pageY);
-  $(sID).css({
-    'left': e.pageX - 40,
-    'top': e.pageY + 40,
-  });
+  curMousePos.x = e.pageX;
+  curMousePos.y = e.pageY;
+    //$('#discard').html(dist);
+    $(sID).css({
+      'top': e.pageY + lastCardCenterY[colFrom],
+      'left': e.pageX + lastCardCenterX,
+    });
 });
 //*********************************************************************//
 </script>
