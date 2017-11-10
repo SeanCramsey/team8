@@ -9,34 +9,30 @@ import java.util.Random;
  */
 public class Game {
 
-    public java.util.List<Card> deck = new ArrayList<>();
+    public Deck deck;
 
-    public java.util.List<java.util.List<Card>> cols = new ArrayList<>(4);
+    public java.util.List<CardCollection> cols = new ArrayList<>(4);
 
 
     public Game(){
     // initialize a new game such that each column can store cards
       for ( int i = 0; i < 4; i++){
-        this.cols.add(i, new ArrayList<Card>());
+        this.cols.add(i, new CardCollection());
       }
     }
 
-    //This builds the deck by adding cards
-    public void buildDeck() {
-        for(int i = 2; i < 15; i++){
-            deck.add(new Card(i,Suit.Clubs));
-            deck.add(new Card(i,Suit.Hearts));
-            deck.add(new Card(i,Suit.Diamonds));
-            deck.add(new Card(i,Suit.Spades));
-        }
+    /*
+    buildDeck creates a new deck object
+     */
+    public void buildDeck(){
+        deck = new Deck();
     }
 
-    //Shuffles the deck for gameplay
-    public void shuffle() {
-        //Seed random number generator
-        long seed = System.nanoTime();
-        // shuffles the deck so that it is random
-        Collections.shuffle(deck, new Random(seed));
+    /*
+    shuffle uses the deck class to shuffle the deck
+     */
+    public void shuffle(){
+        deck.shuffle();
     }
 
 	/*
@@ -48,7 +44,6 @@ public class Game {
 	for(int i=0; i<4; i++) {
         //Draw card from deck
         tempCard = deck.get(0);
-        //remove from deck
         deck.remove(0);
         addCardToCol(i,tempCard); //places card in column
         }
