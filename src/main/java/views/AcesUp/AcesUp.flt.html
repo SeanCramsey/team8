@@ -102,10 +102,12 @@ var isMove = false; //boolean which stops position variable being set
 
 function display(game) {
   console.log(game);
+  $( '.cardLocation' ).removeAttr('style'); //clear all styling
   $( '.cardLocation' ).removeAttr('id'); //should clear all card id's
-  /*/<--if this doesnt work put * here and remove the one below
+  $( '.columnOfCards .cardLocation' ).html("");
+
   $.each(game.cols, function( i, v ){
-    $.each(v, function( key, value){
+    $.each(game.cols[i], function( key, val){
       var x;
       if(val.value > 10){
         if (val.value == 11){
@@ -142,164 +144,7 @@ function display(game) {
       });
     });
   });/**/
-
-//<-- this one
-$( '.columnOfCards .cardLocation' ).html("");
-  $.each(game.cols[0], function( key, val ) {
-      var x;
-      if(val.value > 10){
-        if (val.value == 14){
-          x = "ace";
-        }
-        if (val.value == 11){
-          x = "jack";
-        }
-        else if (val.value == 12) {
-          x = "queen";
-        }
-        else if (val.value == 13) {
-          x = "king";
-        }
-      }
-      else {
-        x = val.value;
-      }
-      var lnk = ("https://raw.githubusercontent.com/hayeah/playing-cards-assets/master/png/"+x+"_of_"+val.suit+".png").toLowerCase();
-      var cID = $('#c0 .l' + key).attr('id', val.value+val.suit); //adds id to element and retrieves it
-      $(cID).css({ //sets css for new id (picture card)
-        'background':  cardBackgroundColor+' url(' + lnk + ')',
-        'background-size': 'contain',
-        'background-position': 'center',
-        'background-repeat': 'no-repeat',
-        'height': cardHeight,
-        'width': cardWidth,
-        'border': cardBorder,
-        'border-radius': cardBorderRadius,
-        'position': 'relative',
-        'top': cardTop,
-        'left': cardLeft,
-        'margin-top': cardMarginTop,
-        'z-index': '1',
-      });
-    });
-
- $.each(game.cols[1], function( key, val ) {
-   var x;
-   if(val.value > 10){
-     if (val.value == 14){
-       x = "ace";
-     }
-     if (val.value == 11){
-       x = "jack";
-     }
-     else if (val.value == 12) {
-       x = "queen";
-     }
-     else if (val.value == 13) {
-       x = "king";
-     }
-   }
-   else {
-     x = val.value;
-   }
-   var lnk = ("https://raw.githubusercontent.com/hayeah/playing-cards-assets/master/png/"+x+"_of_"+val.suit+".png").toLowerCase();
-   var cID = $('#c1 .l' + key).attr('id', val.value+val.suit); //adds id to element and retrieves it
-   $(cID).css({ //sets css for new id (picture card)
-     'background':  cardBackgroundColor+' url(' + lnk + ')',
-     'background-size': 'contain',
-     'background-position': 'center',
-     'background-repeat': 'no-repeat',
-     'height': cardHeight,
-     'width': cardWidth,
-     'border': cardBorder,
-     'border-radius': cardBorderRadius,
-     'position': 'relative',
-     'top': cardTop,
-     'left': cardLeft,
-     'margin-top': cardMarginTop,
-     'z-index': '1',
-   });
-    });
-
- $.each(game.cols[2], function( key, val ) {
-   var x;
-   if(val.value > 10){
-     if (val.value == 14){
-       x = "ace";
-     }
-     if (val.value == 11){
-       x = "jack";
-     }
-     else if (val.value == 12) {
-       x = "queen";
-     }
-     else if (val.value == 13) {
-       x = "king";
-     }
-   }
-   else {
-     x = val.value;
-   }
-   var lnk = ("https://raw.githubusercontent.com/hayeah/playing-cards-assets/master/png/"+x+"_of_"+val.suit+".png").toLowerCase();
-   var cID = $('#c2 .l' + key).attr('id', val.value+val.suit); //adds id to element and retrieves it
-   $(cID).css({ //sets css for new id (picture card)
-     'background':  cardBackgroundColor+' url(' + lnk + ')',
-     'background-size': 'contain',
-     'background-position': 'center',
-     'background-repeat': 'no-repeat',
-     'height': cardHeight,
-     'width': cardWidth,
-     'border': cardBorder,
-     'border-radius': cardBorderRadius,
-     'position': 'relative',
-     'top': cardTop,
-     'left': cardLeft,
-     'margin-top': cardMarginTop,
-     'z-index': '1',
-   });
-    });
-
- $.each(game.cols[3], function( key, val ) {
-   var x;
-   if(val.value > 10){
-     if (val.value == 14){
-       x = "ace";
-     }
-     if (val.value == 11){
-       x = "jack";
-     }
-     else if (val.value == 12) {
-       x = "queen";
-     }
-     else if (val.value == 13) {
-       x = "king";
-     }
-   }
-   else {
-     x = val.value;
-   }
-   var lnk = ("https://raw.githubusercontent.com/hayeah/playing-cards-assets/master/png/"+x+"_of_"+val.suit+".png").toLowerCase();
-   var cID = $('#c3 .l' + key).attr('id', val.value+val.suit); //adds id to element and retrieves it
-   $(cID).css({ //sets css for new id (picture card)
-     'background':  cardBackgroundColor+' url(' + lnk + ')',
-     'background-size': 'contain',
-     'background-position': 'center',
-     'background-repeat': 'no-repeat',
-     'height': cardHeight,
-     'width': cardWidth,
-     'border': cardBorder,
-     'border-radius': cardBorderRadius,
-     'position': 'relative',
-     'top': cardTop,
-     'left': cardLeft,
-     'margin-top': cardMarginTop,
-     'z-index': '1',
-   });
-    });
-    /**/
 }
-
-
 // Calls ApplicationController.gameGet()
 $.getJSON("http://localhost:8080/game", function( data ) {
   display(data);
@@ -383,7 +228,7 @@ $('div').mousedown(function(e) {
         return false; //break each loop
       }
     });
-    if (e.target.className == ('cardLocation l' + (game.cols[colFrom].size() - 1) )) {
+    if (e.target.className == ('cardLocation l' + (game.cols[colFrom].length - 1) )) {
       sID = '#' + e.target.id;
     }
     $(sID).css({
@@ -399,53 +244,56 @@ $('div').mousedown(function(e) {
 });
 //drop card ***********************************************************//
 $(document).mouseup(function(e) { //release anywhere on the page
-  isMove = false;
-  $(sID).css({
-    'position': 'relative',
-    left: position.left,
-    top: position.top,
-    'border': cardBorder,
-    'z-index': '1',
-  });
-  sID = ""; //release card
-  var elem = document.elementFromPoint(e.pageX, e.pageY); //get elemnent at mouse pointer
-  var pID;
-  if ($(elem).is('.cardLocation') || $(elem).is('.emptyLocation')) {
-    $.each($(elem).parents(), function(i, v) {
-      if (v.className == "columnOfCards") {
-        pID = v.id;
-        if (pID == 'c0') {
-          colTo = 0;
-        } else if (pID == 'c1') {
-          colTo = 1;
-        } else if (pID == 'c2') {
-          colTo = 2;
-        } else if (pID == 'c3') {
-          colTo = 3;
-        }
-        if ($(elem).is('.emptyLocation')) {
-          alert('move to empty: ' + colTo);
-          /*TODO handle special case moving to empty column*/
-        } else {
-          //alert("move from: " + colFrom + " fo: " + colTo);
-          /*TODO modify to fit with new rule*/
-          moveCard(colFrom, colTo);
-        }
-        return false; //break each loop
-      }
+  if(sID){
+    isMove = false;
+    $(sID).css({
+      'position': 'relative',
+      left: position.left,
+      top: position.top,
+      'border': cardBorder,
+      'z-index': '1',
     });
-  } else if ($(elem).is('#discard')) {
-    //do discard
-    //alert('discard from col ' + colFrom);
-    removeCard(colFrom);
+    var elem = document.elementFromPoint(e.pageX, e.pageY); //get elemnent at mouse pointer
+    var tID;
+    if ($(elem).is('.cardLocation') || $(elem).is('.emptyLocation')) {
+      $.each($(elem).parents(), function(i, v) {
+        if (v.className == "columnOfCards") {
+          tID = v.id;
+          if (tID == 'c0') {
+            colTo = 0;
+          } else if (tID == 'c1') {
+            colTo = 1;
+          } else if (tID == 'c2') {
+            colTo = 2;
+          } else if (tID == 'c3') {
+            colTo = 3;
+          }
+          if ($(elem).is('.emptyLocation')) {
+            //alert('move to empty: ' + colTo);
+            if(sID.includes('14')){ //is ace, applies "new rule"
+              moveCard(colFrom, colTo);
+            }
+          } else { //standard move
+            //alert("move from: " + colFrom + " fo: " + colTo);
+            /*TODO modify to fit with new rule*/
+            moveCard(colFrom, colTo);
+          }
+          return false; //break each loop
+        }
+      });
+    } else if ($(elem).is('#discard')) {
+      //do discard
+      removeCard(colFrom);
+    }
+    colTo = colFrom = sID = null; //release card //unset to and from
   }
-  colTo = colFrom = null; //unset to and from
 });
 //Move held card around**********************************************//
-$(document).bind('mousemove', function(e) {
+$(document).mousemove(function(e) {
+  //alert(e.pageX +', '+ e.pageY);
   $(sID).css({
-    left: e.pageX - (cardWidth / 2),
-    top: e.pageY + (cardHeight / 2),
+    'left': e.pageX - 40,
+    'top': e.pageY + 40,
   });
 });
 //*********************************************************************//

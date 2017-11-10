@@ -49,7 +49,7 @@ public class Game {
         //Draw card from deck
         tempCard = deck.get(0);
         //remove from deck
-        deck.remove(0); 
+        deck.remove(0);
         addCardToCol(i,tempCard); //places card in column
         }
     }
