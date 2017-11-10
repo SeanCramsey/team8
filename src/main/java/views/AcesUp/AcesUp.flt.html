@@ -102,12 +102,9 @@ var isMove = false; //boolean which stops position variable being set
 
 function display(game) {
   console.log(game);
-  $( '.cardLocation' ).removeAttr('style'); //clear all styling
-  $( '.cardLocation' ).removeAttr('id'); //should clear all card id's
-  $( '.columnOfCards .cardLocation' ).html("");
 
   $.each(game.cols, function( i, v ){
-    $.each(game.cols[i], function( key, val){
+    $.each(v, function( key, val){
       var x;
       if(val.value > 10){
         if (val.value == 11){
@@ -165,6 +162,7 @@ $("#dealButton").click(function(){
 });
 
 function removeCard(colNumber){
+  $( sID ).removeAttr('style id'); //kill selected card
   $.ajax({
   type: "POST",
   url: "/removeCard/"+colNumber,
@@ -178,6 +176,7 @@ function removeCard(colNumber){
 }
 
 function moveCard(cF,cT){
+  $( sID ).removeAttr('style id'); //kill selected card
   $.ajax({
     type: "POST",
     url: "/moveCard/"+cF+"/"+cT,
