@@ -1,3 +1,9 @@
+.ruleBox
+{
+ border: black 2px solid;
+ border-radius: 5px;
+}
+
 h1{
 margin: auto;
 width: 200px;
