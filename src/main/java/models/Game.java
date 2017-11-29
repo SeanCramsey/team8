@@ -13,6 +13,8 @@ public class Game {
 
     public java.util.List<CardCollection> cols = new ArrayList<>(4);
 
+    public boolean gameSpanish;
+
 
     public Game(){
     // initialize a new game such that each column can store cards
@@ -74,7 +76,7 @@ public class Game {
     }
 
     //If column has cards, return true, otherwise false
-    private boolean columnHasCards(int columnNumber) {
+    protected boolean columnHasCards(int columnNumber) {
         // if empty return true, else false
         if(this.cols.get(columnNumber).size()>0){
             return true;
@@ -82,7 +84,7 @@ public class Game {
         return false;
     }
 
-    private Card getTopCard(int columnNumber) {
+    protected Card getTopCard(int columnNumber) {
         return this.cols.get(columnNumber).get(this.cols.get(columnNumber).size()-1);
     }
 
