@@ -12,11 +12,11 @@ public class SpanishDeck extends Deck {
             cards.add(new Card(i, Suit.Spades));
         }
         //Remove 10th card and add the jokers
-        cards.remove(new Card(10, Suit.Clubs));
-        cards.remove(new Card(10, Suit.Hearts));
-        cards.remove(new Card(10, Suit.Diamonds));
-        cards.remove(new Card(10, Suit.Spades));
-        cards.add(new Card(15,Suit.Joker));
-        cards.add(new Card(15,Suit.Joker));
+        cards.remove(new Card(13, Suit.Clubs));
+        cards.remove(new Card(13, Suit.Hearts));
+        cards.remove(new Card(13, Suit.Diamonds));
+        cards.remove(new Card(13, Suit.Spades));
+        cards.add(new Card(13,Suit.Joker));
+        cards.add(new Card(13,Suit.Joker));
     }
 }
