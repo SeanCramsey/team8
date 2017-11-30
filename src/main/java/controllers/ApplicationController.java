@@ -17,6 +17,7 @@
 package controllers;
 
 import models.Game;
+import models.SpanishGame;
 import ninja.Context;
 import ninja.Result;
 import ninja.Results;
@@ -41,7 +42,7 @@ public class ApplicationController {
     }
 
     public Result swapRuleSet() {
-        Game g = new spanishGame();
+        Game g = new SpanishGame();
         g.buildDeck();
         g.shuffle();
         g.dealFour();

@@ -2,7 +2,8 @@
 {
  border: black 2px solid;
  border-radius: 5px;
- display: inline-block;
+ top: 100px;
+ left 50px;
  position: absolute;
 }
 
