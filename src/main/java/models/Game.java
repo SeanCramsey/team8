@@ -13,8 +13,6 @@ public class Game {
 
     public java.util.List<CardCollection> cols = new ArrayList<>(4);
 
-    public boolean gameSpanish;
-
 
     public Game(){
     // initialize a new game such that each column can store cards
