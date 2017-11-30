@@ -2,9 +2,9 @@
 {
  border: black 2px solid;
  border-radius: 5px;
- top: 100px;
+ top: 120px;
  left 50px;
- position: absolute;
+ position: fixed;
 }
 
 h1{
@@ -70,11 +70,12 @@ table{
 }
 
 #swapRuleSetButton {
-   height: 50px;
-   width: 100px;
+   height: 70px;
+   width: 120px;
    position: fixed;
    top: 50px;
    left: 50px;
    border: black solid 1px;
    background: white;
+   border-radius: 5px;
 }

@@ -12,7 +12,6 @@ public class SpanishGame extends Game {
     public void buildDeck(){
         deck = new SpanishDeck();
     }
-
     /*
      * Removes a card if it follows the rules, overloads normal remove.
      *

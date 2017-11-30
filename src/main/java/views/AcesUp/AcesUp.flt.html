@@ -85,7 +85,7 @@
 </table>
 <div id='discard'></div>
 <button id="dealButton"></button>
-<button id="swapRuleSetButton">SWAP RULE SET</button>
+<button id="swapRuleSetButton">SWAP TO SPANISH DECK</button>
 <script>
 
 var game;
@@ -171,6 +171,7 @@ $("#dealButton").click(function(){
 });
 
 $("#swapRuleSetButton").click(function(){
+  $('.columnOfCards .cardLocation').removeAttr('style id');
   $.ajax({
     type: "POST",
     url: "/swapRuleSet",
