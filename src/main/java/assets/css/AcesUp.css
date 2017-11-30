@@ -67,3 +67,13 @@ table{
   border: black solid 1px;
   border-radius: 10px;
 }
+
+#swapRuleSetButton {
+   height: 50px;
+   width: 100px;
+   position: fixed;
+   top: 50px;
+   left: 50px;
+   border: black solid 1px;
+   background: white;
+}

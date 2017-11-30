@@ -85,6 +85,7 @@
 </table>
 <div id='discard'></div>
 <button id="dealButton"></button>
+<button id="swapRuleSet"></button>
 <script>
 
 var game;
@@ -160,6 +161,19 @@ $("#dealButton").click(function(){
   $.ajax({
     type: "POST",
     url: "/dealGame",
+    data: JSON.stringify(game),
+    success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
+          game = data;
+          display(data);},
+    contentType:"application/json; charset=utf-8",
+    dataType:"json",
+  });
+});
+
+$("#swapRuleSetButton").click(function(){
+  $.ajax({
+    type: "POST",
+    url: "/swapRuleSet",
     data: JSON.stringify(game),
     success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
           game = data;
