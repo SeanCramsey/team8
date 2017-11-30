@@ -41,7 +41,7 @@ public class ApplicationController {
         return Results.json().render(g);
     }
 
-    public Result swapRuleSet(Context context, Game g) {
+    public Result swapRuleSet() {
         Game g = new SpanishGame();
         g.buildDeck();
         g.shuffle();
