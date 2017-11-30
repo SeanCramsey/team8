@@ -12,14 +12,21 @@ import java.io.Serializable;
 public class Card implements Serializable {
     public final int value;
     public final Suit suit;
-    //public final String img;
+    public final DeckType deck;
+    public final String img;
 
     @JsonCreator
-    public Card(@JsonProperty("value") int value, @JsonProperty("suit") Suit suit) {
+    public Card(@JsonProperty("value") int value, @JsonProperty("suit") Suit suit, @JsonProperty("deck") DeckType deck) {
         this.value = value;
         this.suit = suit;
-        //this.img = ("https://raw.githubusercontent.com/hayeah/playing-cards-assets/master/png/" + value + "_of_" + suit + ".png").toLowerCase();
-
+        this.deck = deck;
+        int x;
+        if (value == 14){
+          x = 1;
+        } else {
+          x = value;
+        }
+        this.img = "../assets/CardSets/" + deck + "/" + (x + "_of_" + suit + ".png").toLowerCase();
     }
 
     public Suit getSuit() {

@@ -3,5 +3,7 @@ package models;
 import java.io.Serializable;
 
 public enum Suit  implements Serializable {
-    Hearts, Spades, Diamonds, Clubs, Joker
+    Hearts, Spades, Diamonds, Clubs,
+    Swords, Cups, Coins,
+    Joker
 }
