@@ -70,12 +70,14 @@ table{
 }
 
 #swapRuleSetButton {
-   height: 70px;
-   width: 120px;
+   height: 50px;
+   width: 100px;
    position: fixed;
-   top: 50px;
-   left: 50px;
+   top: 0px;
+   left: 0px;
    border: black solid 1px;
    background: white;
    border-radius: 5px;
+   font-family: "Helvetica", sans-serif;
+   text-size: 120%;
 }
