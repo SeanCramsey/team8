@@ -45,13 +45,11 @@ public class SpanishGame extends Game {
         //If there is, remove the card
         if (removeCard) {
             this.cols.get(columnNumber).remove(this.cols.get(columnNumber).size() - 1);
-            return;
         }
         //If there isn't a larger card but there is a joker, use joker rule
-        if (joker){
+        else if (joker){
             this.cols.get(columnNumber).remove(this.cols.get(columnNumber).size() - 1);
             this.cols.get(jokerIdx).remove(this.cols.get(jokerIdx).size() - 1);
-            return;
         }
     }
 }
