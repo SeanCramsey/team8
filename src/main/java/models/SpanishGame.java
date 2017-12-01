@@ -34,7 +34,7 @@ public class SpanishGame extends Game {
                     }
                     //If joker is found, remove Joker and set remove card to true
                     if (compare.getSuit() == Suit.Joker){
-                        if (compare.getValue() > c.getValue()) {
+                        if (compare.getValue() >= c.getValue()) {
                             joker = true;
                             jokerIdx = i;
                         }
