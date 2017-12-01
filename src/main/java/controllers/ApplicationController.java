@@ -33,7 +33,7 @@ public class ApplicationController {
     public Result index() {
         return Results.html().template("views/AcesUp/AcesUp.flt.html");
     }
-    
+
     public Result gameGet(){
         Game g = new Game();
         g.buildDeck();
@@ -43,15 +43,15 @@ public class ApplicationController {
     }
 
     public Result swapRuleSet(Context context, Game g) {
-        if(isSpanishGame) {
-            isSpanishGame = false;
+        if(!isSpanishGame) {
+            isSpanishGame = true;
             g = new SpanishGame();
             g.buildDeck();
             g.shuffle();
             g.dealFour();
         }
         else {
-            isSpanishGame = true;
+            isSpanishGame = false;
             g = new Game();
             g.buildDeck();
             g.shuffle();
