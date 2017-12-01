@@ -52,4 +52,27 @@ public class SpanishGame extends Game {
             this.cols.get(jokerIdx).remove(this.cols.get(jokerIdx).size() - 1);
         }
     }
+
+    /**
+     * Overloads the normal deal four from the deck to handle a 50 card deck
+     */
+    public void dealFour() {
+        Card tempCard; //creates variable as object type card
+        //loop to place a card in each column
+        if(deck.size() < 4){
+            for(int i=0; i<2; i++) {
+                //Draw card from deck
+                tempCard = deck.get(0);
+                deck.remove(0);
+                addCardToCol(i,tempCard); //places card in column
+            }
+            return;
+        }
+        for(int i=0; i<4; i++) {
+            //Draw card from deck
+            tempCard = deck.get(0);
+            deck.remove(0);
+            addCardToCol(i,tempCard); //places card in column
+        }
+    }
 }
