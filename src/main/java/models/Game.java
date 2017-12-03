@@ -97,7 +97,7 @@ public class Game {
         addCardToCol(columnTo , topCard);
     }
 
-    private void addCardToCol(int columnTo, Card cardToMove) {
+    protected void addCardToCol(int columnTo, Card cardToMove) {
         cols.get(columnTo).add(cardToMove);
     }
 
