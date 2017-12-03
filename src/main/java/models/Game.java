@@ -20,6 +20,23 @@ public class Game {
             this.cols.add(i, new CardCollection());
         }
     }
+    /*
+     * Swaps between game types
+     */
+    public void swapDeck(int deckType){
+        if(deckType == 0){
+            deck = new Deck();
+        }
+        if(deckType == 1){
+            deck = new SpanishDeck();
+        }
+        deck.shuffle();
+        this.cols = new ArrayList<>(4);
+        // initialize a new game such that each column can store cards
+        for (int i = 0; i < 4; i++) {
+            this.cols.add(i, new CardCollection());
+        }
+    }
 
     /*
     buildDeck creates a new deck object

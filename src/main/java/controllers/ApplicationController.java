@@ -17,7 +17,6 @@
 package controllers;
 
 import models.Game;
-import models.SpanishGame;
 import ninja.Context;
 import ninja.Result;
 import ninja.Results;
@@ -45,16 +44,12 @@ public class ApplicationController {
     public Result swapRuleSet(Context context, Game g) {
         if(!isSpanishGame) {
             isSpanishGame = true;
-            g = new SpanishGame();
-            g.buildDeck();
-            g.shuffle();
+            g.swapDeck(1);
             g.dealFour();
         }
         else {
             isSpanishGame = false;
-            g = new Game();
-            g.buildDeck();
-            g.shuffle();
+            g.swapDeck(0);
             g.dealFour();
         }
         return Results.json().render(g);
