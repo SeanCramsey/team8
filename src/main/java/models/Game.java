@@ -7,26 +7,16 @@ import java.util.Random;
 /**
  * Assignment 1: Each of the blank methods below require implementation to get AcesUp to build/run
  */
-public class Game {
-
+abstract public class Game {
     public Deck deck;
 
     public java.util.List<CardCollection> cols = new ArrayList<>(4);
 
 
-    public Game() {
-        // initialize a new game such that each column can store cards
-        for (int i = 0; i < 4; i++) {
-            this.cols.add(i, new CardCollection());
-        }
-    }
-
     /*
     buildDeck creates a new deck object
      */
-    public void buildDeck(){
-        deck = new Deck();
-    }
+    abstract public void buildDeck();
 
     /*
     shuffle uses the deck class to shuffle the deck
@@ -35,43 +25,15 @@ public class Game {
         deck.shuffle();
     }
 
-	/*
-	Deal Four does the equivalent of drawing four cards and then setting them on each holding column.
-	*/
-    public void dealFour() {
-	Card tempCard; //creates variable as object type card
-    //loop to place a card in each column
-	for(int i=0; i<4; i++) {
-        //Draw card from deck
-        tempCard = deck.get(0);
-        deck.remove(0);
-        addCardToCol(i,tempCard); //places card in column
-        }
-    }
+    /**
+     * Deal Four does the equivalent of drawing four cards and then setting them on each holding column.
+     */
+    abstract public void dealFour();
 
-    //This removes the card based on the rules of aces high
-    public void remove(int columnNumber) {
-        Card c = getTopCard(columnNumber);
-        boolean removeCard = false;
-        //Go thru columns to see if there is a larger card of same suit
-        for (int i = 0; i < 4; i++) {
-            if (i != columnNumber) {
-                if (columnHasCards(i)) {
-                    Card compare = getTopCard(i);
-                    if (compare.getSuit() == c.getSuit()) {
-                        if (compare.getValue() > c.getValue()) {
-                            removeCard = true;
-                        }
-                    }
-                }
-            }
-        }
-        //If there is, remove the card
-        if (removeCard) {
-            this.cols.get(columnNumber).remove(this.cols.get(columnNumber).size() - 1);
-        }
-        //Otherwise TODO:Add error message if not possible to remove
-    }
+    /**
+     * This removes cards based on the implementation of game
+     */
+    abstract public void remove(int columnNumber);
 
 
     //If column has cards, return true, otherwise false
@@ -105,4 +67,5 @@ public class Game {
     private void removeCardFromCol(int colFrom) {
         this.cols.get(colFrom).remove(this.cols.get(colFrom).size()-1);
     }
+    
 }

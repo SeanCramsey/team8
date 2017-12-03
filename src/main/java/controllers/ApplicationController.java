@@ -16,6 +16,7 @@
 
 package controllers;
 
+import models.EnglishGame;
 import models.Game;
 import models.SpanishGame;
 import ninja.Context;
@@ -35,7 +36,7 @@ public class ApplicationController {
     }
 
     public Result gameGet(){
-        Game g = new Game();
+        Game g = new EnglishGame();
         g.buildDeck();
         g.shuffle();
         g.dealFour();
@@ -49,23 +50,10 @@ public class ApplicationController {
             g.buildDeck();
             g.shuffle();
             g.dealFour();
-            g.dealFour();
-            g.dealFour();
-            g.dealFour();
-            g.dealFour();
-            g.dealFour();
-            g.dealFour();
-            g.dealFour();
-            g.dealFour();
-            g.dealFour();
-            g.dealFour();
-            g.dealFour();
-            g.dealFour();
-            //Works fine here
         }
         else {
             isSpanishGame = false;
-            g = new Game();
+            g = new EnglishGame();
             g.buildDeck();
             g.shuffle();
             g.dealFour();

@@ -1,23 +1,22 @@
 package models;
 
+import java.util.ArrayList;
+
 public class SpanishGame extends Game {
+
     public SpanishGame(){
         for( int i = 0; i < 4; i++){
             this.cols.add(i, new CardCollection());
         }
     }
-    /*
-     * Builds a spanish deck, overloads normal build deck
-     */
-    @Override public void buildDeck(){
+
+    @Override
+    public void buildDeck() {
         deck = new SpanishDeck();
     }
-    /*
-     * Removes a card if it follows the rules, overloads normal remove.
-     *
-     * @param   int columnNumber
-     */
-    @Override public void remove(int columnNumber) {
+
+    @Override
+    public void remove(int columnNumber) {
         Card c = getTopCard(columnNumber);
         boolean removeCard = false;
         boolean joker = false;
@@ -56,7 +55,8 @@ public class SpanishGame extends Game {
     /**
      * Overloads the normal deal four from the deck to handle a 50 card deck
      */
-    @Override public void dealFour() {
+    @Override
+    public void dealFour() {
         Card tempCard; //creates variable as object type card
         //loop to place a card in each column
         if(deck.size() < 4){
