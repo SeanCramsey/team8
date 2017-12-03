@@ -49,19 +49,6 @@ public class ApplicationController {
             g.buildDeck();
             g.shuffle();
             g.dealFour();
-            g.dealFour();
-            g.dealFour();
-            g.dealFour();
-            g.dealFour();
-            g.dealFour();
-            g.dealFour();
-            g.dealFour();
-            g.dealFour();
-            g.dealFour();
-            g.dealFour();
-            g.dealFour();
-            g.dealFour();
-            //Works fine here
         }
         else {
             isSpanishGame = false;
