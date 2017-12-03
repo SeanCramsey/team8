@@ -6,16 +6,14 @@ public class SpanishDeck extends Deck {
     public SpanishDeck(){
         cards = new ArrayList<Card>();
         for(int i = 2; i < 15; i++){
-            cards.add(new Card(i, Suit.Clubs, DeckType.Spanish));
-            cards.add(new Card(i, Suit.Cups, DeckType.Spanish));
-            cards.add(new Card(i, Suit.Coins, DeckType.Spanish));
-            cards.add(new Card(i, Suit.Swords, DeckType.Spanish));
+            if(i != 13){
+                cards.add(new Card(i, Suit.Clubs, DeckType.Spanish));
+                cards.add(new Card(i, Suit.Cups, DeckType.Spanish));
+                cards.add(new Card(i, Suit.Coins, DeckType.Spanish));
+                cards.add(new Card(i, Suit.Swords, DeckType.Spanish));
+            }
         }
         //Remove 10th card and add the jokers
-        cards.remove(new Card(13, Suit.Clubs, DeckType.Spanish));
-        cards.remove(new Card(13, Suit.Cups, DeckType.Spanish));
-        cards.remove(new Card(13, Suit.Coins, DeckType.Spanish));
-        cards.remove(new Card(13, Suit.Swords, DeckType.Spanish));
         cards.add(new Card(13,Suit.Joker, DeckType.Spanish));
         cards.add(new Card(13,Suit.Joker, DeckType.Spanish));
     }
