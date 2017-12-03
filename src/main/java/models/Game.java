@@ -73,6 +73,7 @@ public class Game {
         //Otherwise TODO:Add error message if not possible to remove
     }
 
+
     //If column has cards, return true, otherwise false
     protected boolean columnHasCards(int columnNumber) {
         // if empty return true, else false

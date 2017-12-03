@@ -9,7 +9,7 @@ public class SpanishGame extends Game {
     /*
      * Builds a spanish deck, overloads normal build deck
      */
-    public void buildDeck(){
+    @Override public void buildDeck(){
         deck = new SpanishDeck();
     }
     /*
@@ -17,7 +17,7 @@ public class SpanishGame extends Game {
      *
      * @param   int columnNumber
      */
-    public void remove(int columnNumber) {
+    @Override public void remove(int columnNumber) {
         Card c = getTopCard(columnNumber);
         boolean removeCard = false;
         boolean joker = false;
@@ -56,7 +56,7 @@ public class SpanishGame extends Game {
     /**
      * Overloads the normal deal four from the deck to handle a 50 card deck
      */
-    public void dealFour() {
+    @Override public void dealFour() {
         Card tempCard; //creates variable as object type card
         //loop to place a card in each column
         if(deck.size() < 4){
