@@ -3,14 +3,20 @@
     <state version="4" enabled="true" />
     <globalmarks />
     <filemarks>
-      <file name="/Dummy.txt" timestamp="1510304840943">
+      <file name="/Dummy.txt" timestamp="1512346134741">
         <mark key="[" line="0" column="0" />
+      </file>
+      <file name="$USER_HOME$/Desktop/team8 Stuff/team8-master/src/test/java/models/testCard.java" timestamp="1512346862325">
+        <mark key="[" line="10" column="38" />
+      </file>
+      <file name="$USER_HOME$/Desktop/team8 Stuff/team8-master/src/test/java/models/testSpanish.java" timestamp="1512346773996">
+        <mark key="[" line="7" column="0" />
       </file>
       <file name="$USER_HOME$/Desktop/team8 Stuff/team8-master/src/main/java/assets/css/AcesUp.css" timestamp="1510265940911">
         <mark key="[" line="0" column="0" />
       </file>
-      <file name="$USER_HOME$/Desktop/team8 Stuff/team8-master/src/main/java/models/Game.java" timestamp="1510307982350">
-        <mark key="[" line="53" column="7" />
+      <file name="$USER_HOME$/Desktop/team8 Stuff/team8-master/src/main/java/models/Game.java" timestamp="1512346282952">
+        <mark key="[" line="84" column="18" />
       </file>
       <file name="$USER_HOME$/Desktop/team8 Stuff/team8-master/src/main/java/controllers/ApplicationController.java" timestamp="1510265355728">
         <mark key="[" line="55" column="8" />
