@@ -15,13 +15,6 @@ public class testDeck
     for(int i = 0; i < 52; i++){
       assertNotNull(deck.cards.get(i));
     }
-    /*******************************/
-    for(int i = 0; i < 4; i++){
-      for(int j = 2; j < 15; i++){
-        assertEquals(j, deck.cards.get(i).value); //right?
-      }
-    }
-    /******************************/
   }
   @Test
   public void testShuffle(){
@@ -30,7 +23,7 @@ public class testDeck
 
     deck.shuffle();
     for (int i = 0; i < 52; i++){
-      assertFalse(deck.cards.get(i).equals(deck.cards.get(i))); //see that cards changed position, dont know if this will work though
+      assertFalse(deck.cards.get(i).equals(deckB.cards.get(i))); //see that cards changed position, dont know if this will work though
     }
   }
 }

@@ -29,25 +29,4 @@ public class testCard {
         Card d = new Card(4,Suit.Diamonds, DeckType.Standard);
         assertEquals("4Diamonds",d.toString());
     }
-//test Move function and remove function.
-    @Test
-    public void testMoveCard(){
-        Game g = new Game();
-        g.customDeal(0,3,6,9);
-        g.remove(3);
-        assertEquals(0,g.cols.get(3).size());
-        g.move(0,2);
-        assertEquals(1,g.cols.get(2).size());
-        assertEquals(0,g.cols.get(0).size());
-    }
-    //test the cardCollection functions
-   // @Test
-    //public void testCardCollection()
-    //{
-     //   Game g = new Game();
-        
-        
-    //}
-        
-
 }
