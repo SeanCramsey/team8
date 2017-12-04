@@ -74,6 +74,23 @@ public class Game {
             addCardToCol(i,tempCard); //places card in column
         }
     }
+	
+	
+	//customDeal to setup game for testing purposes (i.e. shuffled cards are random and hard to test)
+    public void customDeal(int c1, int c2, int c3, int c4) {
+        Card tempCard0 = new Card(c1,Suit.Clubs, DeckType.Standard);
+        addCardToCol(0,tempCard0);
+        //deck.remove(c1);
+        Card tempCard1 = new Card(c2,Suit.Clubs, DeckType.Standard);
+        addCardToCol(1,tempCard1);
+        //deck.remove(c2);
+        Card tempCard2 = new Card(c3,Suit.Clubs, DeckType.Standard);
+        addCardToCol(2,tempCard2);
+        //deck.remove(c3);
+        Card tempCard3 = new Card(c4,Suit.Clubs, DeckType.Standard);
+        addCardToCol(3,tempCard3);
+        //deck.remove(c4);
+    }
 
     //This removes the card based on the rules of aces high
     public void remove(int columnNumber) {
