@@ -39,6 +39,8 @@ public class CardCollection {
     public CardCollection (CardCollection collectionIn){
         topIndex = 0;
         int size = collectionIn.size();
+        topIndex = size - 1;
+        cards = new ArrayList<Card>();
         for(int i = 0;i < size; i++){
             this.add(collectionIn.get(i));
         }
