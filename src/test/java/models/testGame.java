@@ -29,7 +29,7 @@ public class testGame {
         Game g2 = new Game();
         g2.buildDeck();
         for (int i = 0; i < 52; i++){
-          assertFalse(g1.deck.cards[i], g2.deck.cards[i]); //see that cards changed position, dont know if this will work though
+          assertFalse(g1.deck.cards.get(i), g2.deck.cards.get(i)); //see that cards changed position, dont know if this will work though
         }
     }
 
