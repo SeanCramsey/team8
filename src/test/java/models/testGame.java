@@ -60,18 +60,20 @@ public class testGame {
         Game g = new Game();
         g.customDeal(0,3,6,9);
         g.remove(3);
-        assertEquals(0,g.cols.get(3).size());
+        assertEquals(1,g.cols.get(3).size());
+        g.remove(2);
+        assertEquals(0,g.cols.get(2).size());
     }
 
     @Test
     public void testMove(){
       Game g = new Game();
-      g.customDeal(0,3,6,9);
-      g.move(0,1);
-      assertEquals(0,g.cols.get(0).size());
-      assertEquals(2,g.cols.get(1).size());
+      g.customDeal(2,3,6,14);
+      g.move(2,0);
+      assertEquals(2,g.cols.get(0).size());
+      assertEquals(0,g.cols.get(2).size());
 
-      assertEquals("0Clubs",g.cols.get(1).toString());
+      assertEquals("[2Clubs, 6Clubs]",g.cols.get(0).toString());
     }
 
 
