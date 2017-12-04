@@ -112,6 +112,7 @@ var isMove = false; //boolean which stops position variable being set
 function display(game) {
   console.log(game);
 
+  $(".columnOfCards .cardLocation").removeAttr("id style");
   $.each(game.cols, function( i, v ){
     $.each(v.cards, function( key, val){
     //  var lnk = ("https://raw.githubusercontent.com/hayeah/playing-cards-assets/master/png/"+x+"_of_"+val.suit+".png").toLowerCase();
