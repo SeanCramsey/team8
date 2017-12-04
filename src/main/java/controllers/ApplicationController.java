@@ -46,7 +46,6 @@ public class ApplicationController {
         if(!isSpanishGame) {
             isSpanishGame = true;
             g.swapDeck(DeckType.Spanish);
-            g.dealFour();
         }
         else {
             isSpanishGame = false;
