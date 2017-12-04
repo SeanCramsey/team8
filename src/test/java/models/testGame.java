@@ -28,10 +28,9 @@ public class testGame {
         g1.shuffle();
         Game g2 = new Game();
         g2.buildDeck();
-        g2.shuffle();
-        //TODO:Fix this
-        // g1 and g2 could shuffle to the same order, but that chance is approximately 1 in 8*10^67 shuffles
-        //assertFalse(Arrays.equals(g1.deck.cards.toArray(),g2.deck.cards.toArray()));
+        for (int i = 0; i < 52; i++){
+          assertFalse(g1.deck.cards[i], g2.deck.cards[i]); //see that cards changed position, dont know if this will work though
+        }
     }
 
     @Test
@@ -62,6 +61,17 @@ public class testGame {
         g.customDeal(0,3,6,9);
         g.remove(3);
         assertEquals(0,g.cols.get(3).size());
+    }
+
+    @test
+    public void testMove(){
+      Game g = new Game();
+      g.customDeal(0,3,6,9);
+      g.move(0,1);
+      assertEquals(0,g.cols[0].size());
+      assertEquals(2,g.cols[1].size());
+
+      assertEquals("0Clubs",g.cols.get(1).size().toString());
     }
 
 
