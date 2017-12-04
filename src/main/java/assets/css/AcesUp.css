@@ -1,3 +1,12 @@
+.ruleBox
+{
+ border: black 2px solid;
+ border-radius: 5px;
+ top: 120px;
+ left 50px;
+ position: fixed;
+}
+
 h1{
 margin: auto;
 width: 200px;
@@ -58,4 +67,17 @@ table{
   background-position: center;
   border: black solid 1px;
   border-radius: 10px;
+}
+
+#swapRuleSetButton {
+   height: 50px;
+   width: 100px;
+   position: fixed;
+   top: 0px;
+   left: 0px;
+   border: black solid 1px;
+   background: white;
+   border-radius: 5px;
+   font-family: "Helvetica", sans-serif;
+   text-size: 120%;
 }

@@ -16,6 +16,7 @@
 
 package controllers;
 
+import models.DeckType;
 import models.Game;
 import ninja.Context;
 import ninja.Result;
@@ -27,16 +28,31 @@ import ninja.params.PathParam;
 @Singleton
 public class ApplicationController {
 
+    public boolean isSpanishGame = false;
+
     public Result index() {
         return Results.html().template("views/AcesUp/AcesUp.flt.html");
     }
-    
+
     public Result gameGet(){
         Game g = new Game();
         g.buildDeck();
         g.shuffle();
         g.dealFour();
+        return Results.json().render(g);
+    }
 
+    public Result swapRuleSet(Context context, Game g) {
+        if(!isSpanishGame) {
+            isSpanishGame = true;
+            g.swapDeck(DeckType.Spanish);
+        }
+        else {
+            isSpanishGame = false;
+            g.swapDeck(DeckType.Standard);
+        }
+        g.shuffle();
+        g.dealFour();
         return Results.json().render(g);
     }
 

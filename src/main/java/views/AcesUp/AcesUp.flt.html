@@ -4,7 +4,15 @@
 <script type="text/javascript" src="/assets/webjars/jquery/2.1.3/jquery.js"></script>
 
 <body>
-
+  <div class="ruleBox">
+    <p><u>Rules:</u></p>
+    <p>1. You can remove a card</p>
+    <p>if it is the lower value</p>
+    <p>of the same suit in the</p>
+    <p>bottom row.</p>
+    <p>2. Only Aces can be moved</p>
+    <p>to empty columns.</p>
+  </div>
 <table>
   <td class="columnOfCards" id="c0">
     <div class='emptyLocation'></div>
@@ -77,6 +85,7 @@
 </table>
 <div id='discard'></div>
 <button id="dealButton"></button>
+<button id="swapRuleSetButton">SWAP DECK</button>
 <script>
 
 var game;
@@ -103,29 +112,20 @@ var isMove = false; //boolean which stops position variable being set
 function display(game) {
   console.log(game);
 
+  $(".columnOfCards .cardLocation").removeAttr("id style");
   $.each(game.cols, function( i, v ){
     $.each(v.cards, function( key, val){
-      var x;
-      if(val.value > 10){
-        if (val.value == 11){
-          x = "jack";
-        }
-        else if (val.value == 12) {
-          x = "queen";
-        }
-        else if (val.value == 13) {
-          x = "king";
-        }
-        else if (val.value == 14){
-          x = "ace";
-        }
-      } else {
-        x = val.value;
-      }
-      var lnk = ("https://raw.githubusercontent.com/hayeah/playing-cards-assets/master/png/"+x+"_of_"+val.suit+".png").toLowerCase();
+    //  var lnk = ("https://raw.githubusercontent.com/hayeah/playing-cards-assets/master/png/"+x+"_of_"+val.suit+".png").toLowerCase();
       var cID = $('#c' + i + ' .l' + key).attr('id', val.value+val.suit); //adds id to element and retrieves it
+      if(val.deck == "Spanish"){
+        cardWidth = '78px';
+        $(".emptyLocation").css({
+          'width':'78px',
+        });
+      }
       $(cID).css({ //sets css for new id (picture card)
-        'background':  cardBackgroundColor+' url(' + lnk + ')',
+        'background-color':  cardBackgroundColor,
+        'background-image': 'url(' + this.img + ')',
         'background-size': 'contain',
         'background-position': 'center',
         'background-repeat': 'no-repeat',
@@ -152,6 +152,20 @@ $("#dealButton").click(function(){
   $.ajax({
     type: "POST",
     url: "/dealGame",
+    data: JSON.stringify(game),
+    success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
+          game = data;
+          display(data);},
+    contentType:"application/json; charset=utf-8",
+    dataType:"json",
+  });
+});
+
+$("#swapRuleSetButton").click(function(){
+  $('.columnOfCards .cardLocation').removeAttr('style id');
+  $.ajax({
+    type: "POST",
+    url: "/swapRuleSet",
     data: JSON.stringify(game),
     success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
           game = data;
@@ -273,9 +287,8 @@ $(document).mouseup(function(e) { //release anywhere on the page
               moveCard(colFrom, colTo);
             }
           } else { //standard move
-            //alert("move from: " + colFrom + " fo: " + colTo);
-            /*TODO modify to fit with new rule*/
-            moveCard(colFrom, colTo);
+            //do nothing
+            //moveCard(colFrom, colTo);
           }
           return false; //break each loop
         }

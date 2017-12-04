@@ -14,11 +14,27 @@ public class Game {
     public java.util.List<CardCollection> cols = new ArrayList<>(4);
 
 
-    public Game(){
-    // initialize a new game such that each column can store cards
-      for ( int i = 0; i < 4; i++){
-        this.cols.add(i, new CardCollection());
-      }
+    public Game() {
+        // initialize a new game such that each column can store cards
+        for (int i = 0; i < 4; i++) {
+            this.cols.add(i, new CardCollection());
+        }
+    }
+    /*
+     * Swaps between game types
+     */
+    public void swapDeck(DeckType deckType){
+        if(deckType == DeckType.Standard){
+            deck = new Deck();
+        }
+        if(deckType == DeckType.Spanish){
+            deck = new SpanishDeck();
+        }
+        this.cols = new ArrayList<>(4);
+        // initialize a new game such that each column can store cards
+        for (int i = 0; i < 4; i++) {
+            this.cols.add(i, new CardCollection());
+        }
     }
 
     /*
@@ -39,20 +55,48 @@ public class Game {
 	Deal Four does the equivalent of drawing four cards and then setting them on each holding column.
 	*/
     public void dealFour() {
-	Card tempCard; //creates variable as object type card
-    //loop to place a card in each column
-	for(int i=0; i<4; i++) {
-        //Draw card from deck
-        tempCard = deck.get(0);
-        deck.remove(0);
-        addCardToCol(i,tempCard); //places card in column
+        Card tempCard; //creates variable as object type card
+        //loop to place a card in each column
+        if(deck.size() < 4){
+            for(int i=0; i<2; i++) {
+                //Draw card from deck
+                tempCard = deck.get(0);
+                deck.remove(0);
+                addCardToCol(i,tempCard); //places card in column
+            }
+            return;
         }
+        for(int i=0; i<4; i++) {
+            //Draw card from deck
+            tempCard = deck.get(0);
+            deck.remove(0);
+            addCardToCol(i,tempCard); //places card in column
+        }
+    }
+	
+	
+	//customDeal to setup game for testing purposes (i.e. shuffled cards are random and hard to test)
+    public void customDeal(int c1, int c2, int c3, int c4) {
+        Card tempCard0 = new Card(c1,Suit.Clubs, DeckType.Standard);
+        addCardToCol(0,tempCard0);
+        //deck.remove(c1);
+        Card tempCard1 = new Card(c2,Suit.Clubs, DeckType.Standard);
+        addCardToCol(1,tempCard1);
+        //deck.remove(c2);
+        Card tempCard2 = new Card(c3,Suit.Clubs, DeckType.Standard);
+        addCardToCol(2,tempCard2);
+        //deck.remove(c3);
+        Card tempCard3 = new Card(c4,Suit.Clubs, DeckType.Standard);
+        addCardToCol(3,tempCard3);
+        //deck.remove(c4);
     }
 
     //This removes the card based on the rules of aces high
     public void remove(int columnNumber) {
         Card c = getTopCard(columnNumber);
         boolean removeCard = false;
+        boolean joker = false;
+        int jokerIdx = -1;
         //Go thru columns to see if there is a larger card of same suit
         for (int i = 0; i < 4; i++) {
             if (i != columnNumber) {
@@ -63,6 +107,13 @@ public class Game {
                             removeCard = true;
                         }
                     }
+                    //If joker is found, remove Joker and set remove card to true
+                    if (Suit.Joker.equals(compare.getSuit())){
+                        if (compare.getValue() >= c.getValue()) {
+                            joker = true;
+                            jokerIdx = i;
+                        }
+                    }
                 }
             }
         }
@@ -70,11 +121,16 @@ public class Game {
         if (removeCard) {
             this.cols.get(columnNumber).remove(this.cols.get(columnNumber).size() - 1);
         }
-        //Otherwise TODO:Add error message if not possible to remove
+        //If there isn't a larger card but there is a joker, use joker rule
+        else if (joker){
+            this.cols.get(columnNumber).remove(this.cols.get(columnNumber).size() - 1);
+            this.cols.get(jokerIdx).remove(this.cols.get(jokerIdx).size() - 1);
+        }
     }
 
+
     //If column has cards, return true, otherwise false
-    private boolean columnHasCards(int columnNumber) {
+    protected boolean columnHasCards(int columnNumber) {
         // if empty return true, else false
         if(this.cols.get(columnNumber).size()>0){
             return true;
@@ -82,7 +138,7 @@ public class Game {
         return false;
     }
 
-    private Card getTopCard(int columnNumber) {
+    protected Card getTopCard(int columnNumber) {
         return this.cols.get(columnNumber).get(this.cols.get(columnNumber).size()-1);
     }
 
@@ -97,7 +153,7 @@ public class Game {
         addCardToCol(columnTo , topCard);
     }
 
-    private void addCardToCol(int columnTo, Card cardToMove) {
+    protected void addCardToCol(int columnTo, Card cardToMove) {
         cols.get(columnTo).add(cardToMove);
     }
 
