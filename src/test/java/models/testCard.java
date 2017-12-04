@@ -35,10 +35,10 @@ public class testCard {
         Game g = new Game();
         g.customDeal(0,3,6,9);
         g.remove(3);
-        assertEquals(0,g.cols.get(3).cards.size());
+        assertEquals(0,g.cols.get(3).size());
         g.move(0,2);
-        assertEquals(1,g.cols.get(2).cards.size());
-        assertEquals(0,g.cols.get(0).cards.size());
+        assertEquals(1,g.cols.get(2).size());
+        assertEquals(0,g.cols.get(0).size());
     }
     //test the cardCollection functions
    // @Test
