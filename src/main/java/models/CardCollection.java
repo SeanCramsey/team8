@@ -61,7 +61,7 @@ public class CardCollection {
      * Removes top card if successful return a 1 else 0
      */
     public int pop(){
-        cards.remove(topIndex);
+        cards.remove(topIndex-1);
         topIndex--;
         return 1;
     }
